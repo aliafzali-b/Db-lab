@@ -8,19 +8,8 @@ namespace Wpfschooldemo
 {
     class Classes
     {
-        int _id;
+        public int classid;
         string _name;
-        public int id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                _id = value;
-            }
-        }
         public string name
         {
             get
