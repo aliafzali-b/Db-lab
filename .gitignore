@@ -21,11 +21,13 @@
 *.pyc
 *.xml
 ipch/
-Wpfschooldemo/Wpfschooldemo/obj/
-WpfTeacherDemo/WpfTeacherDemo/obj/
+**/Wpfschooldemo/Wpfschooldemo/App.config
+**/Wpfschooldemo/Wpfschooldemo/obj/
+**/WpfTeacherDemo/WpfTeacherDemo/obj/
 
-Wpfschooldemo/Wpfschooldemo/bin/
-WpfTeacherDemo/WpfTeacherDemo/bin/
+**/WpfTeacherDemo/WpfTeacherDemo/App.config
+**/Wpfschooldemo/Wpfschooldemo/bin/
+**/WpfTeacherDemo/WpfTeacherDemo/bin/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
