@@ -69,7 +69,7 @@ namespace Wpfschooldemo
             string fathername = fathernameTextbox.Text;
             long phone=-1;
             try { phone = Int64.Parse(phonenumberTextbox.Text); } catch { }
-            string major = majorTextbox.Text;
+            int major = majorsComboBox.SelectedIndex;
             int classid = classesComboBox.SelectedIndex;
 
 
@@ -78,7 +78,7 @@ namespace Wpfschooldemo
             {
                 // DataAccess db = new DataAccess();
                 db.insertIntoStudentsTable(username, password, name, fathername,phone,major,classid+1);
-                db.Add_One_Student_Values_In_Classes_List(db.GetStudentIdByUsername(username));
+                //db.Add_One_Student_Values_In_Classes_List(db.GetStudentIdByUsername(username));
 
                 clearAllTextBoxes();
                 MessageBox.Show("انجام شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -96,7 +96,7 @@ namespace Wpfschooldemo
             nameTextbox.Text = "";
             fathernameTextbox.Text = "";
             phonenumberTextbox.Text = "";
-            majorTextbox.Text = "";
+            majorsComboBox.SelectedIndex = -1;
             classesComboBox.SelectedIndex = -1;
         }
 
