@@ -11,16 +11,20 @@
         <Button x:Name="addButton" Cursor="Hand" Content="تایید" HorizontalAlignment="Left" Height="34" Margin="690,377,0,0" VerticalAlignment="Top" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="addButton_Click"/>
         <TextBox x:Name="usernameTextbox" HorizontalAlignment="Left" Height="30" Margin="445,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <TextBox x:Name="passwordTextbox" HorizontalAlignment="Left" Height="30" Margin="445,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="nameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="445,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="emailTextbox" HorizontalAlignment="Left" Height="30" Margin="445,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-
+        <TextBox x:Name="nameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="445,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="lastnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="445,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="emailTextbox" HorizontalAlignment="Left" Height="30" Margin="445,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="addressTextbox" HorizontalAlignment="Left" Height="79" Margin="41,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="365" FontSize="18" FontFamily="b nazanin"/>
+        <ComboBox x:Name="genderComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="156,266,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
         <Label Content=": نام کاربری " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="687,137,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=": کلمه عبور " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="687,178,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": نام و نام خانوادگی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="643,218,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": پست الکترونیک " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="643,258,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="643,221,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام خانوادگی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="643,261,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": پست الکترونیک " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="643,308,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": آدرس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="300,133,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": جنسیت " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="343,261,0,0" VerticalAlignment="Top" Width="75" FontSize="18" FontFamily="B nazanin"/>
         <Label Content="مدیریت حساب" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="382,10,0,0" VerticalAlignment="Top" Width="401" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
         <Label Content="لطفا نام کاربری و کلمه عبور خود که بعدا با همان وارد برنامه میشوید را وارد کنید" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="197,65,0,0" VerticalAlignment="Top" Width="586" FontSize="20" FontFamily="B nazanin" FontWeight="Bold"/>
         <Image Visibility="Hidden" x:Name="returnImage" Cursor="Hand" HorizontalAlignment="Left" Height="40" Margin="10,369,0,0" VerticalAlignment="Top" Width="40" Source="return.png" Stretch="Fill" MouseLeftButtonUp="returnImage_MouseLeftButtonUp" />
-        <Button Content="custombutton" HorizontalAlignment="Left" Margin="122,218,0,0" VerticalAlignment="Top" Width="108" Height="35" Click="Button_Click"/>
     </Grid>
 </Window>

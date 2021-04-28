@@ -29,14 +29,14 @@ namespace Wpfschooldemo
             InitializeComponent();
             this.Closed += new EventHandler(Boss_Panel_Closed);
 
-            db.createTeachersTable();
+            /*db.createTeachersTable();
             db.createClassesTable();
             db.createCoursesTable();
             db.createStudentsTable();
             //----Ali Afzali
             //db.createExamTable();
             //db.createStuCourseTable();
-            db.createExamTable2();
+            db.createExamTable2();*/
             Globals.LogedIn = true;
         }
         void Boss_Panel_Closed(object sender, EventArgs e)

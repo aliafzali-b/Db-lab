@@ -33,14 +33,15 @@ namespace Wpfschooldemo
             Globals.cache = "";
             InitializeComponent();
             this.Closed += new EventHandler(MainWindow_Closed);
-
             try
             {
-                db.createBossTable();
-                this.Hide();
-                var create_Boss_Window = new create_Boss_Window();
-                create_Boss_Window.Show();
-                
+                db.Create_All_Tables();
+                if (!db.isThereAnyBoss())
+                {
+                    this.Hide();
+                    var create_Boss_Window = new create_Boss_Window();
+                    create_Boss_Window.Show();
+                }
             }
             catch 
             {
@@ -57,7 +58,7 @@ namespace Wpfschooldemo
                 if (myBoss[0].rememberme == 1)
                 {
                     usernameTextbox.Text = myBoss[0].username;
-                    passwordBox.Password = myBoss[0].password;
+                    passwordBox.Password = myBoss[0]._password;
                     rememberCheckbox.IsChecked = true;
                 }
                 else

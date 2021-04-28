@@ -111,19 +111,19 @@ namespace Wpfschooldemo
             }
         }
 
-        public void initializeBoss(string username, string password, string name, string email)
+        public void initializeBoss(string username, string password, string name, string lastname, string address, string email,char gender)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM Boss").ToList();
+                    var output = connection.Query($"SELECT * FROM Manager").ToList();
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
                     if (range == 0)
-                        connection.Execute($"insert into Boss values('{username}','{password}',N'{name}','{email}', 0)");
+                        connection.Execute($"insert into Manager values(0,'{username}','{password}',N'{name}',N'{lastname}',N'{address}','{email}','{gender}', 0)");
                     else
-                        connection.Execute($"UPDATE Boss SET _username ='{username}', _password ='{password}', _name = N'{name}', _email = '{email}' ,_rememberme = 0");
+                        connection.Execute($"UPDATE Manager SET username ='{username}', password ='{password}', Name = N'{name}', Lastname = N'{lastname}', Address = N'{address}', Email = '{email}' , gender = '{gender}',_rememberme = 0");
                     MessageBox.Show("با موفقیت ذخیره شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
@@ -135,7 +135,7 @@ namespace Wpfschooldemo
             {
                 try
                 {
-                    connection.Execute($"UPDATE Boss SET _rememberme =  {input}");
+                    connection.Execute($"UPDATE Manager SET rememberme =  {input}");
                     //MessageBox.Show(" شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
@@ -188,13 +188,13 @@ namespace Wpfschooldemo
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM Students").ToList();
+                    var output = connection.Query($"SELECT * FROM Student").ToList();
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
                     if (majorid>=0)
-                        connection.Execute($"insert into Students values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
+                        connection.Execute($"insert into Student values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
                     else
-                        connection.Execute($"insert into Students values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
+                        connection.Execute($"insert into Student values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
                     //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
@@ -212,7 +212,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Boss>($"select * from Boss").ToList();
+                var output = connection.Query<Boss>($"select * from Manager").ToList();
                 return output;
             }
         }
@@ -420,7 +420,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Courses>($"select * from boss").ToList();
+                var output = connection.Query<Boss>($"select * from manager").ToList();
                 int range = output.Count();
                 if (range > 0)
                     return true;
@@ -429,11 +429,11 @@ namespace Wpfschooldemo
 
             }
         }
-        public bool isBossUsernamePasswordCorrect(string username, String password)
+        public bool isBossUsernamePasswordCorrect(string username, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Courses>($"select * from boss where _username = '{username}' and _password = '{password}'").ToList();
+                var output = connection.Query<Boss>($"select * from manager where username = '{username}' and _password = '{password}'").ToList();
                 int range = output.Count();
                 if (range > 0)
                     return true;
@@ -739,11 +739,11 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Adress nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID),FOREIGN KEY(ClassID) REFERENCES Class(ClassID),FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID));");
-                    MessageBox.Show("Success");
+                    //MessageBox.Show("Success");
                 }
                 catch
                 {
-                    MessageBox.Show("Error");
+                    //MessageBox.Show("Tables allready exists");
                     return 0;
                 }
             }

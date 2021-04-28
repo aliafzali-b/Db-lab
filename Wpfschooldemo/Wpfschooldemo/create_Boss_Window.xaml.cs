@@ -28,6 +28,9 @@ namespace Wpfschooldemo
                 returnImage.Visibility = Visibility.Visible;
             else
                 returnImage.Visibility = Visibility.Hidden;
+
+            genderComboBox.Items.Add("آقا");
+            genderComboBox.Items.Add("خانم");
         }
         void create_Boss_Window_Closed(object sender, EventArgs e)
         {
@@ -39,10 +42,22 @@ namespace Wpfschooldemo
             string username = usernameTextbox.Text;
             string password = passwordTextbox.Text;
             string name = nameTextbox.Text;
+            string lastname = lastnameTextbox.Text;
+            string address = addressTextbox.Text;
             string email = emailTextbox.Text;
-            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(email))
+            int genderid = genderComboBox.SelectedIndex;
+            char gender;
+            if (genderid == 0)
             {
-                db.initializeBoss(username, password, name, email);
+                gender = 'M';
+            }
+            else
+            {
+                gender = 'F';
+            }
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(lastname) && !string.IsNullOrWhiteSpace(address) && !string.IsNullOrWhiteSpace(email) && genderid>=0)
+            {
+                db.initializeBoss(username, password, name, lastname, address, email, gender);
                 this.Closed -= create_Boss_Window_Closed;
                 this.Close();
                 var MainWindow = new MainWindow();
@@ -57,11 +72,6 @@ namespace Wpfschooldemo
             this.Close();
             var Boss_Panel = new Boss_Panel();
             Boss_Panel.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            db.Create_All_Tables();
         }
     }
 }
