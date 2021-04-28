@@ -66,18 +66,31 @@ namespace Wpfschooldemo
             string username = usernameTextbox.Text;
             string password = passwordTextbox.Text;
             string name = nameTextbox.Text;
+            string lastname = lastnameTextbox.Text;
             string fathername = fathernameTextbox.Text;
             long phone=-1;
             try { phone = Int64.Parse(phonenumberTextbox.Text); } catch { }
-            int major = majorsComboBox.SelectedIndex;
+            string address = addressTextbox.Text;
+            string info = infoTextbox.Text;
+
+            int majorid = majorsComboBox.SelectedIndex;
             int classid = classesComboBox.SelectedIndex;
+            int genderid = genderComboBox.SelectedIndex;
+            char gender;
+            if (genderid == 0)
+            {
+                gender = 'M';
+            }
+            else
+            {
+                gender = 'F';
+            }
 
 
-
-            if (username != "" && password != "" && name != "" && fathername != "" && phone >=0 && classid >=0)
+            if (username != "" && password != "" && name != "" && lastname != "" && fathername != "" && phone >=0 && classid >=0)
             {
                 // DataAccess db = new DataAccess();
-                db.insertIntoStudentsTable(username, password, name, fathername,phone,major,classid+1);
+                db.insertIntoStudentsTable(username, password, name,lastname, fathername,phone,address,info,majorid,classid,gender);
                 //db.Add_One_Student_Values_In_Classes_List(db.GetStudentIdByUsername(username));
 
                 clearAllTextBoxes();
@@ -124,7 +137,7 @@ namespace Wpfschooldemo
                     Random phonernd = new Random();
                     phone = ttt.Next(913000000, 915000000);
                     major = randomMajor();
-                    db.insertIntoStudentsTable(username, password, name, fathername, phone, major, sample.id);
+                    //must work db.insertIntoStudentsTable(username, password, name, fathername, phone, major, sample.id);
                 }
             }
         }
