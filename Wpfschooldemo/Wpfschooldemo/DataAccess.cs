@@ -182,7 +182,7 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("cant"); }
             }
         }
-        public void insertIntoStudentsTable(string username, string password, string name, string lastname, string fathername, long phone, int majorid, int classid,string address,string info,char gender)
+        public void insertIntoStudentsTable(string username, string password, string name, string lastname, string fathername, long phone, string address, string info, int classid, int majorid,char gender)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
@@ -192,9 +192,9 @@ namespace Wpfschooldemo
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
                     if (majorid>=0)
-                        connection.Execute($"insert into Students values({range + 1},N'{name}',N'{lastname}',N'{address}',{classid},'{username}','{password}',{phone},N'{fathername}',{majorid},N'{info}','{gender}')");
+                        connection.Execute($"insert into Students values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
                     else
-                        connection.Execute($"insert into Students values({range + 1},N'{name}',N'{lastname}',N'{address}',{classid},'{username}','{password}',{phone},N'{fathername}', Null ,N'{info}','{gender}')");
+                        connection.Execute($"insert into Students values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
                     //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
