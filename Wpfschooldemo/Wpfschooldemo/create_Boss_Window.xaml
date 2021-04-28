@@ -21,5 +21,6 @@
         <Label Content="مدیریت حساب" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="382,10,0,0" VerticalAlignment="Top" Width="401" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
         <Label Content="لطفا نام کاربری و کلمه عبور خود که بعدا با همان وارد برنامه میشوید را وارد کنید" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="197,65,0,0" VerticalAlignment="Top" Width="586" FontSize="20" FontFamily="B nazanin" FontWeight="Bold"/>
         <Image Visibility="Hidden" x:Name="returnImage" Cursor="Hand" HorizontalAlignment="Left" Height="40" Margin="10,369,0,0" VerticalAlignment="Top" Width="40" Source="return.png" Stretch="Fill" MouseLeftButtonUp="returnImage_MouseLeftButtonUp" />
+        <Button Content="custombutton" HorizontalAlignment="Left" Margin="122,218,0,0" VerticalAlignment="Top" Width="108" Height="35" Click="Button_Click"/>
     </Grid>
 </Window>

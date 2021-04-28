@@ -58,5 +58,10 @@ namespace Wpfschooldemo
             var Boss_Panel = new Boss_Panel();
             Boss_Panel.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            db.Create_All_Tables();
+        }
     }
 }
