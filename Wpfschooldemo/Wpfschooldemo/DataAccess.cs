@@ -192,9 +192,9 @@ namespace Wpfschooldemo
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
                     if (majorid>=0)
-                        connection.Execute($"insert into Student values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
+                        connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
                     else
-                        connection.Execute($"insert into Student values({range + 1},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
+                        connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
                     //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }

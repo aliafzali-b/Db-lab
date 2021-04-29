@@ -8,7 +8,7 @@ namespace Wpfschooldemo
 {
     class Classes
     {
-        public int classid;
+        public int id;
         string _name;
         public string name
         {
