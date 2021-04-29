@@ -21,5 +21,16 @@ namespace Wpfschooldemo
                 _name = value;
             }
         }
+        public int id
+        {
+            get
+            {
+                return classid;
+            }
+            set
+            {
+                classid = value;
+            }
+        }
     }
 }
