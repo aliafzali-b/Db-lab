@@ -197,6 +197,23 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("cant"); }
             }
         }
+
+
+        public void insertIntoMajorTable(string name,int code)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    var output = connection.Query($"SELECT * FROM Major").ToList();
+                    int range = output.Count();
+                    //MessageBox.Show("its id will be " + (range + 1).ToString());
+                    connection.Execute($"insert into Major values({range},N'{name}',{code}");
+                    //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("cant"); }
+            }
+        }
         public List<Classes> GetClasses()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
@@ -485,6 +502,20 @@ namespace Wpfschooldemo
                 var output = connection.Query<Classes>($"select * from Students where _username = '{username}'").ToList();
                 int range = output.Count();
                 if (range == 0 && !string.IsNullOrWhiteSpace(username))
+                    return true;
+                else
+                    return false;
+
+            }
+        }
+
+        public bool isMajorNameValid(string name)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                var output = connection.Query<Major>($"select * from Major where _Name = '{name}'").ToList();
+                int range = output.Count();
+                if (range == 0 && !string.IsNullOrWhiteSpace(name))
                     return true;
                 else
                     return false;
