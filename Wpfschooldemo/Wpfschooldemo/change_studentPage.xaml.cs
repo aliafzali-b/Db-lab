@@ -55,11 +55,10 @@ namespace Wpfschooldemo
 
                 int stuid = db.GetStudentIdByUsername(oldusernameTextbox.Text);
                 newusernameTextbox.Text = studentsList[stuid - 1].username;
-                newpasswordTextbox.Text = studentsList[stuid - 1].password;
-                newnameTextbox.Text = studentsList[stuid - 1].name;
+                newpasswordTextbox.Text = studentsList[stuid - 1]._password;
+                newnameTextbox.Text = studentsList[stuid - 1]._name;
                 newfathernameTextbox.Text = studentsList[stuid - 1].fathername;
-                newphonenumberTextbox.Text = (studentsList[stuid - 1].phonenumber).ToString();
-                newmajorTextbox.Text = (studentsList[stuid - 1].major);
+                newphonenumberTextbox.Text = (studentsList[stuid - 1].phone).ToString();
                 classesComboBox.SelectedIndex = (studentsList[stuid - 1].classid)-1;
                 changeButton.IsEnabled = true;
                 enableAllTextBoxes();

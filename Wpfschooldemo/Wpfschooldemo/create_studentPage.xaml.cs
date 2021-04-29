@@ -77,7 +77,6 @@ namespace Wpfschooldemo
             string address = addressTextbox.Text;
             string info = infoTextbox.Text;
 
-            int majorid = majorsComboBox.SelectedIndex;
             int classid = classesComboBox.SelectedIndex;
             int genderid = genderComboBox.SelectedIndex;
             char gender;
@@ -94,7 +93,7 @@ namespace Wpfschooldemo
             if (username != "" && password != "" && name != "" && lastname != "" && fathername != "" && phone >=0 && classid >=0)
             {
                 // DataAccess db = new DataAccess();
-                db.insertIntoStudentsTable(username, password, name,lastname, fathername,phone,address,info,majorid,classid,gender);
+                db.insertIntoStudentsTable(username, password, name,lastname, fathername,phone,address,info,classid,gender);
                 //db.Add_One_Student_Values_In_Classes_List(db.GetStudentIdByUsername(username));
 
                 clearAllTextBoxes();
@@ -113,7 +112,6 @@ namespace Wpfschooldemo
             nameTextbox.Text = "";
             fathernameTextbox.Text = "";
             phonenumberTextbox.Text = "";
-            majorsComboBox.SelectedIndex = -1;
             classesComboBox.SelectedIndex = -1;
         }
 

@@ -38,7 +38,7 @@ namespace Wpfschooldemo
 
         private void usernameTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Globals.karname_List.Clear();
+           /*aliali  Globals.karname_List.Clear();
             if (db.GetStudentIdByUsername(usernameTextbox.Text) > 0)
             {
                 Students mystudent = db.SearchStudents("_username", usernameTextbox.Text)[0];
@@ -63,7 +63,7 @@ namespace Wpfschooldemo
                 } 
             }
             UpdateDataGrid();
-
+           */
         }
         private void UpdateDataGrid()
         {

@@ -182,7 +182,7 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("cant"); }
             }
         }
-        public void insertIntoStudentsTable(string username, string password, string name, string lastname, string fathername, long phone, string address, string info, int classid, int majorid,char gender)
+        public void insertIntoStudentsTable(string username, string password, string name, string lastname, string fathername, long phone, string address, string info, int classid,char gender)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
@@ -191,10 +191,7 @@ namespace Wpfschooldemo
                     var output = connection.Query($"SELECT * FROM Student").ToList();
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    if (majorid>=0)
-                        connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},{majorid},'{gender}')");
-                    else
-                        connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid}, Null ,'{gender}')");
+                    connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},'{gender}')");
                     //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
@@ -204,7 +201,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from classes").ToList();
+                var output = connection.Query<Classes>($"select * from class").ToList();
                 return output;
             }
         }
@@ -236,7 +233,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Students>($"SELECT students._id, students._username, students._password, students._name, students._fathername, students._phonenumber, students._major,classes._id as _classid, classes._name as _classname FROM students INNER JOIN classes ON students._classid = classes._id order by _id; ").ToList();
+                var output = connection.Query<Students>($"SELECT * from student").ToList();
                 return output;
             }
         }
@@ -324,7 +321,7 @@ namespace Wpfschooldemo
                 try
                 {
                     Students sample = (Students)output[0];
-                    return sample.id;
+                    return sample.stuid;
                 }
                 catch
                 {
@@ -605,9 +602,9 @@ namespace Wpfschooldemo
                             StudentsList = GetStudentsByClassId(counter);
                             foreach (Students mystudent in StudentsList)
                             {
-                                if (should_We_Add_This_Student_To_Class(mystudent.id, counter, sample.id))
+                                if (should_We_Add_This_Student_To_Class(mystudent.stuid, counter, sample.id))
                                 {
-                                    connection.Execute($"INSERT INTO Course{sample.id}_Of_class{counter} (_stuid, _name, _fathername) values({mystudent.id},N'{mystudent.name}',N'{mystudent.fathername}')");
+                                    connection.Execute($"INSERT INTO Course{sample.id}_Of_class{counter} (_stuid, _name, _fathername) values({mystudent.stuid},N'{mystudent._name}',N'{mystudent.fathername}')");
                                 }
                             }
                         }
@@ -663,7 +660,7 @@ namespace Wpfschooldemo
                     {
                         if (result == '1')
                         {
-                            connection.Execute($"UPDATE Course{sample.id}_Of_class{counter} SET _name = N'{StudentsList[stuid - 1].name}', _fathername = N'{StudentsList[stuid - 1].fathername}' WHERE _stuid = '{stuid}';");
+                            connection.Execute($"UPDATE Course{sample.id}_Of_class{counter} SET _name = N'{StudentsList[stuid - 1]._name}', _fathername = N'{StudentsList[stuid - 1].fathername}' WHERE _stuid = '{stuid}';");
                         }
                         //createcourse_a_ofclass_b_Table(sample.id, counter);
                         counter++;
@@ -685,7 +682,7 @@ namespace Wpfschooldemo
                 {
                     char[] classesBinary = sample.classes.ToCharArray();
                     if (classesBinary[classid-1] == '1' && should_We_Add_This_Student_To_Class(stuid, classid, sample.id))
-                        connection.Execute($"INSERT INTO Course{sample.id}_Of_class{classid} (_stuid, _name, _fathername) values({stuid},N'{StudentsList[stuid - 1].name}',N'{StudentsList[stuid - 1].fathername}')");
+                        connection.Execute($"INSERT INTO Course{sample.id}_Of_class{classid} (_stuid, _name, _fathername) values({stuid},N'{StudentsList[stuid - 1]._name}',N'{StudentsList[stuid - 1].fathername}')");
                 }
             }
         }
@@ -733,11 +730,11 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Major (MajorID int NOT NULL,_Name nvarchar(255) NOT NULL,MCode int NULL,PRIMARY KEY(MajorID));" +
                         $"CREATE TABLE Courses(CourseID int NOT NULL,_Name nvarchar(255) NOT NULL,Unit int NOT NULL,CCode int NULL,PRIMARY KEY(CourseID));" +
                         $"CREATE TABLE Class(ClassID int NOT NULL,_Name nvarchar(255) NOT NULL,MajorID int NULL,BranchNumber int NULL,_Year nvarchar(255) NULL,ChairNum int NULL,PRIMARY KEY(ClassID),FOREIGN KEY(MajorID) REFERENCES Major(MajorID) on update cascade);" +
-                        $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,Addres nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
+                        $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,Address nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
                         $"CREATE TABLE Exam(ExamID int NOT NULL,CourseID int NOT NULL,ClassID int NOT NULL,_Date datetime NOT NULL,Ratio float(10) NOT NULL,Info nvarchar(255) NULL,Status char(1) NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade );" +
                         $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade int NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
-                        $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Adress nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
+                        $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
                     //MessageBox.Show("Success");
                 }

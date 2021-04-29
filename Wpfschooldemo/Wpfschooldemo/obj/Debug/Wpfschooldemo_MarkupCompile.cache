@@ -4,28 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
-=======
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
->>>>>>> 62ed6fbe9aaea40cface86398f243bc0287324fc
 Wpfschooldemo
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-I:\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
-13-1795646128
-1-1783080343
-27-548899497
-15-1143722309
-=======
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
 13-1795646128
 1-1783080343
 27-548899497
 15-986109791
->>>>>>> 62ed6fbe9aaea40cface86398f243bc0287324fc
 Boss_Panel.xaml;change_studentPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_studentPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;studentsPanel.xaml;userGuidePage.xaml;
 
 False
