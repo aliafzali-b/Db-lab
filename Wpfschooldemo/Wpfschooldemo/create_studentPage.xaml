@@ -37,6 +37,7 @@
         <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="465,78,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>
         <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" Margin="465,79,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Visibility="Hidden"/>
         <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" Margin="462,75,0,0" VerticalAlignment="Top" Width="38" Source="warning.png" Visibility="Hidden" />
+        <Button Content="Button" HorizontalAlignment="Left" Margin="245,457,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Page>

@@ -8,7 +8,7 @@ namespace Wpfschooldemo
 {
     class Classes
     {
-        public int id;
+        public int classid;
         string _name;
         public string name
         {
@@ -19,6 +19,17 @@ namespace Wpfschooldemo
             set
             {
                 _name = value;
+            }
+        }
+        public int id
+        {
+            get
+            {
+                return classid;
+            }
+            set
+            {
+                classid = value;
             }
         }
     }
