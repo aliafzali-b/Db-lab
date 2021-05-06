@@ -15,8 +15,9 @@ namespace Wpfschooldemo
         public string lastname;
         public string fathername;
         public long phone;
+        public string _address;
+        public string info;
         public int classid;
-
-       
+        public char gender;
     }
 }

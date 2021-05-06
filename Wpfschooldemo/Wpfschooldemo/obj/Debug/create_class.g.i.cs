@@ -229,14 +229,6 @@ namespace Wpfschooldemo {
             case 12:
             this.textBox2 = ((System.Windows.Controls.TextBox)(target));
             return;
-            case 13:
-            
-            #line 33 "..\..\create_class.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
-            
-            #line default
-            #line hidden
-            return;
             }
             this._contentLoaded = true;
         }

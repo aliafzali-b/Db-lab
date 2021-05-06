@@ -86,6 +86,8 @@ namespace Wpfschooldemo
         }
 
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        { }
 
     }
 }

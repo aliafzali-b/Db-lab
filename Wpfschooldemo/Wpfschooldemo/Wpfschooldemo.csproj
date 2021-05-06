@@ -70,6 +70,9 @@
     <Compile Include="create_Boss_Window.xaml.cs">
       <DependentUpon>create_Boss_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="create_major.xaml.cs">
+      <DependentUpon>create_major.xaml</DependentUpon>
+    </Compile>
     <Compile Include="create_studentPage.xaml.cs">
       <DependentUpon>create_studentPage.xaml</DependentUpon>
     </Compile>
@@ -81,10 +84,12 @@
     <Compile Include="Karname_page.xaml.cs">
       <DependentUpon>Karname_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Major.cs" />
     <Compile Include="seeAll_studentsPage.xaml.cs">
       <DependentUpon>seeAll_studentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Students.cs" />
+    <Compile Include="StudentsOfClass.cs" />
     <Compile Include="studentsPanel.xaml.cs">
       <DependentUpon>studentsPanel.xaml</DependentUpon>
     </Compile>
@@ -111,6 +116,10 @@
     <Page Include="create_courses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="create_major.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="create_studentPage.xaml">
       <SubType>Designer</SubType>
