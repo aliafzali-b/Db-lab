@@ -110,11 +110,17 @@ namespace Wpfschooldemo
             usernameTextbox.Text = "";
             passwordTextbox.Text = "";
             nameTextbox.Text = "";
+            lastnameTextbox.Text = "";
             fathernameTextbox.Text = "";
             phonenumberTextbox.Text = "";
+            addressTextbox.Text = "";
+            infoTextbox.Text = "";
             classesComboBox.SelectedIndex = -1;
+            genderComboBox.SelectedIndex = -1 ;
         }
 
+
+        //---- The following code is junk
         private void FillClassesButton_Click(object sender, RoutedEventArgs e)
         {
             string username;

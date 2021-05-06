@@ -334,7 +334,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Students>($"select * from Students where _username = '{username}'").ToList();
+                var output = connection.Query<Students>($"select * from Student where username = '{username}'").ToList();
                 try
                 {
                     Students sample = (Students)output[0];
@@ -415,16 +415,16 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("db error"); }
             }
         }
-        public void updateStudentByUsername(string oldUsername, string newUsername, string password, string name, string fathername, long phone, string major, int classid)
+        public void updateStudentByUsername(string oldUsername, string newUsername, string password, string name, string lastname, string fathername, long phone, string address, string info, int classid, char gender)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(major))
-                        connection.Execute($"UPDATE Students SET _username = '{newUsername}', _password = '{password}', _name = N'{name}', _fathername = N'{fathername}' , _phoneNumber = {phone}, _major = N'{major}' , _classid= {classid} WHERE _username = '{oldUsername}';");
-                    else
-                        connection.Execute($"UPDATE Students SET _username = '{newUsername}', _password = '{password}', _name = N'{name}', _fathername = N'{fathername}' , _phoneNumber = {phone}, _major = NULL , _classid= {classid} WHERE _username = '{oldUsername}';");
+                    //if (!string.IsNullOrEmpty(major))
+                        connection.Execute($"UPDATE Student SET username = '{newUsername}', _password = '{password}', _name = N'{name}', lastname = N'{lastname}', fathername = N'{fathername}' , phone = {phone}, _address = N'{address}',info = N'{info}', classid= {classid},gender ='{gender}' WHERE username = '{oldUsername}';");
+                    //else
+                        //connection.Execute($"UPDATE Students SET _username = '{newUsername}', _password = '{password}', _name = N'{name}', _fathername = N'{fathername}' , _phoneNumber = {phone}, _major = NULL , _classid= {classid} WHERE _username = '{oldUsername}';");
                     MessageBox.Show("با موفقیت تغیر یافت", "successful", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("db error"); }
@@ -499,13 +499,12 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from Students where _username = '{username}'").ToList();
+                var output = connection.Query<Students>($"select * from Student where username = '{username}'").ToList();
                 int range = output.Count();
                 if (range == 0 && !string.IsNullOrWhiteSpace(username))
                     return true;
                 else
                     return false;
-
             }
         }
 
@@ -761,11 +760,11 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Major (MajorID int NOT NULL,_Name nvarchar(255) NOT NULL,MCode int NULL,PRIMARY KEY(MajorID));" +
                         $"CREATE TABLE Courses(CourseID int NOT NULL,_Name nvarchar(255) NOT NULL,Unit int NOT NULL,CCode int NULL,PRIMARY KEY(CourseID));" +
                         $"CREATE TABLE Class(ClassID int NOT NULL,_Name nvarchar(255) NOT NULL,MajorID int NULL,BranchNumber int NULL,_Year nvarchar(255) NULL,ChairNum int NULL,PRIMARY KEY(ClassID),FOREIGN KEY(MajorID) REFERENCES Major(MajorID) on update cascade);" +
-                        $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,Address nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
+                        $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,_Address nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
                         $"CREATE TABLE Exam(ExamID int NOT NULL,CourseID int NOT NULL,ClassID int NOT NULL,_Date datetime NOT NULL,Ratio float(10) NOT NULL,Info nvarchar(255) NULL,Status char(1) NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade );" +
                         $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade int NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
-                        $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
+                        $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,_Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
                     //MessageBox.Show("Success");
                 }

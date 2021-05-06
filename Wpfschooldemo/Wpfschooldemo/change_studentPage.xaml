@@ -13,23 +13,29 @@
         <TextBox x:Name="oldusernameTextbox" HorizontalAlignment="Left" Height="30" Margin="500,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" TextChanged="oldusernameTextbox_TextChanged"/>
         <TextBox x:Name="newusernameTextbox" HorizontalAlignment="Left" Height="30" Margin="500,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <TextBox x:Name="newpasswordTextbox" HorizontalAlignment="Left" Height="30" Margin="500,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="newnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="newfathernameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,238,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="newphonenumberTextbox" HorizontalAlignment="Left" Height="30" Margin="500,278,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="newmajorTextbox" HorizontalAlignment="Left" Height="30" Margin="500,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newfathernameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,278,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newphonenumberTextbox" HorizontalAlignment="Left" Height="30" Margin="500,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <Label Content=": نام کاربری قدیمی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,80,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=": نام کاربری جدید " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,119,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=": کلمه عبور جدید " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="692,159,0,0" VerticalAlignment="Top" Width="124" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": نام و نام خانوادگی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,199,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": نام پدر " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,239,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": شماره تماس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,279,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": رشته تحصیلی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,319,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام پدر " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,279,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": شماره تماس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,319,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=": ویرایش مشخصات دانش آموز " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="516,5,0,0" VerticalAlignment="Top" Width="317" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
-        <Label Content=": کلاس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="742,359,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
-        <ComboBox x:Name="classesComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,359,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
         <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="465,78,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>
         <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" Margin="465,79,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Visibility="Hidden"/>
         <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" Margin="462,75,0,0" VerticalAlignment="Top" Width="38" Source="warning.png" Visibility="Hidden" />
+        <TextBox x:Name="newnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newlastnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,239,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <Label Content=": نام " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,199,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام خانوادگی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,239,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": جنسیت " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="698,360,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": کلاس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="742,396,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
+        <ComboBox x:Name="genderComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,360,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
+        <ComboBox x:Name="classesComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="500,401,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
+        <TextBox x:Name="newaddressTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="88" Margin="49,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newinfoTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="88" Margin="49,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="18" FontFamily="b nazanin"/>
+        <Label Content=": آدرس محل سکونت " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="271,80,0,0" VerticalAlignment="Top" Width="169" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": توضیحات اضافه " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="271,244,0,0" VerticalAlignment="Top" Width="169" FontSize="18" FontFamily="B nazanin"/>
 
     </Grid>
 </Page>
