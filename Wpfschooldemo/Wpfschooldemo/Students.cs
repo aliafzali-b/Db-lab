@@ -8,16 +8,49 @@ namespace Wpfschooldemo
 {
     class Students
     {
-        public int stuid;
-        public string username;
-        public string _password;
-        public string _name;
-        public string lastname;
-        public string fathername;
-        public long phone;
-        public string _address;
-        public string info;
-        public int classid;
-        public char gender;
+        public int stuid
+        {
+            get; set;
+        }
+        public string username
+        {
+            get; set;
+        }
+        public string _password
+        {
+            get; set;
+        }
+        public string _name
+        {
+            get; set;
+        }
+        public string lastname
+        {
+            get; set;
+        }
+        public string fathername
+        {
+            get; set;
+        }
+        public long phone
+        {
+            get; set;
+        }
+        public string _address
+        {
+            get; set;
+        }
+        public string info
+        {
+            get; set;
+        }
+        public int classid
+        {
+            get; set;
+        }
+        public char gender
+        {
+            get; set;
+        }
     }
 }

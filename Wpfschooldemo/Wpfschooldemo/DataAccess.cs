@@ -266,20 +266,9 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                if (type != "_classname" && type != "_name")
-                {
-                    var output = connection.Query<Students>($"SELECT students._id, students._username, students._password, students._name, students._fathername, students._phonenumber, students._major,classes._id as _classid, classes._name as _classname FROM students INNER JOIN classes ON students._classid = classes._id Where {type} like N'%{value}%' order by _id").ToList();
+                    var output = connection.Query<Students>($"SELECT * from student Where {type} like N'%{value}%'").ToList();
                     return output;
-                }
-                else if (type != "_name")
-                {
-                    var output = connection.Query<Students>($"SELECT students._id, students._username, students._password, students._name, students._fathername, students._phonenumber, students._major,classes._id as _classid, classes._name as _classname FROM students INNER JOIN classes ON students._classid = classes._id Where classes._name like N'%{value}%' order by _id").ToList();
-                    return output;
-                }else
-                {
-                    var output = connection.Query<Students>($"SELECT students._id, students._username, students._password, students._name, students._fathername, students._phonenumber, students._major,classes._id as _classid, classes._name as _classname FROM students INNER JOIN classes ON students._classid = classes._id Where Students._name like N'%{value}%' order by _id").ToList();
-                    return output;
-                }
+                
             }
         }
         public int GetClassIdByName(string name)
@@ -548,15 +537,14 @@ namespace Wpfschooldemo
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM Students").ToList();
+                    var output = connection.Query($"SELECT * FROM Student").ToList();
                     int range = output.Count();
                     int deleteID = GetStudentIdByUsername(username);
-                    //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    connection.Execute($"delete from Students where _username = '{username}'");
-                    for (int i = deleteID; i < range; i++)
-                    {
-                        connection.Execute($"UPDATE Students SET _id = {i} WHERE _id = {i + 1};");
-                    }
+                    MessageBox.Show("its id is " + deleteID.ToString());
+                    //connection.Execute($"delete from Students where _username = '{username}'");
+                    connection.Execute($"delete from grade where stuid = {deleteID}");
+                    connection.Execute($"DELETE FROM Student WHERE Stuid = {deleteID}");
+                    connection.Execute($"UPDATE student SET stuid=stuid-1 WHERE Stuid>{deleteID} ");
                     MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("db error"); }
@@ -762,7 +750,7 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Class(ClassID int NOT NULL,_Name nvarchar(255) NOT NULL,MajorID int NULL,BranchNumber int NULL,_Year nvarchar(255) NULL,ChairNum int NULL,PRIMARY KEY(ClassID),FOREIGN KEY(MajorID) REFERENCES Major(MajorID) on update cascade);" +
                         $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,_Address nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
                         $"CREATE TABLE Exam(ExamID int NOT NULL,CourseID int NOT NULL,ClassID int NOT NULL,_Date datetime NOT NULL,Ratio float(10) NOT NULL,Info nvarchar(255) NULL,Status char(1) NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade );" +
-                        $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade int NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
+                        $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade smallmoney NULL,FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,_Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
