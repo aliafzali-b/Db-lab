@@ -9,7 +9,7 @@
       Title="delete_studentPage">
 
     <Grid>
-        <Button x:Name="deleteButton" Content="حذف" HorizontalAlignment="Left" Height="34" Margin="740,518,0,0" VerticalAlignment="Top" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="deleteButton_Click" IsEnabled="False"/>
+        <Button x:Name="deleteButton" Content="حذف" HorizontalAlignment="Left" Margin="740,518,0,10" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="deleteButton_Click" IsEnabled="False"/>
         <TextBox x:Name="usernameTextbox" HorizontalAlignment="Left" Height="30" Margin="534,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" TextChanged="usernameTextbox_TextChanged"/>
         <Label Content=": نام کاربری " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="743,78,0,0" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="B nazanin"/>
         <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="500,79,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>

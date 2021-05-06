@@ -40,7 +40,7 @@ namespace Wpfschooldemo
                 errorImage.Visibility = Visibility.Visible;
             trueImage.Visibility = Visibility.Hidden;
             deleteButton.IsEnabled = false;
-            if (db.GetStudentIdByUsername(usernameTextbox.Text) > 0)
+            if (db.GetStudentIdByUsername(usernameTextbox.Text) >= 0)
             {
                 trueImage.Visibility = Visibility.Visible;
                 errorImage.Visibility = Visibility.Hidden;
@@ -55,7 +55,7 @@ namespace Wpfschooldemo
             string username = usernameTextbox.Text;
             if (MessageBox.Show("آیا واقعا میخواهید این دانش آموز حذف شود؟", "Are you sure", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                db.deleteStudentOFClassesList(db.GetStudentIdByUsername(username));
+                ///db.deleteStudentOFClassesList(db.GetStudentIdByUsername(username));
                 db.deleteStudentByUserName(username);
             }
 

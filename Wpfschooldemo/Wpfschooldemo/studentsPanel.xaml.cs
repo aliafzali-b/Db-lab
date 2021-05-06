@@ -34,16 +34,18 @@ namespace Wpfschooldemo
             this.Closed += new EventHandler(studentsPanel_Closed);
             normalColor = Color.FromArgb(0xFF, 0x42, 0x42, 0x42);
             selectedColor = Color.FromArgb(0xFF, 0x7E, 0x7E, 0x7E);
-            db.createStudentsTable();
 
             changeBackgroundColor(seeAllViewButton);
             searchComboBox.Items.Add("نام کاربری");
             searchComboBox.Items.Add("کلمه عبور");
-            searchComboBox.Items.Add("نام و نام خانوادگی");
+            searchComboBox.Items.Add("نام");
+            searchComboBox.Items.Add("نام خانوادگی");
             searchComboBox.Items.Add("نام پدر");
             searchComboBox.Items.Add("شماره تماس");
-            searchComboBox.Items.Add("رشته تحصیلی");
+            searchComboBox.Items.Add("آدرس");
+            searchComboBox.Items.Add("توضیحات");
             searchComboBox.Items.Add("نام کلاس");
+            searchComboBox.Items.Add("جنسیت");
         }
         void studentsPanel_Closed(object sender, EventArgs e)
         {
@@ -52,7 +54,6 @@ namespace Wpfschooldemo
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-
         }
         private void UpdateDataGrid()
         {
@@ -60,19 +61,21 @@ namespace Wpfschooldemo
             studentsDataGrid.ItemsSource = studentsList;
             studentsDataGrid.IsReadOnly = true;
             try
-            {
-                studentsDataGrid.Columns.RemoveAt(7);
-                studentsDataGrid.Columns[0].Header = " Id ";
-                studentsDataGrid.Columns[1].Header = " نام کاربری";
-                studentsDataGrid.Columns[2].Header = " کلمه عبور ";
-                studentsDataGrid.Columns[3].Header = " نام ";
-                studentsDataGrid.Columns[4].Header = " نام پدر ";
-                studentsDataGrid.Columns[5].Header = " شماره تماس ";
-                studentsDataGrid.Columns[6].Header = " رشته ";
-                studentsDataGrid.Columns[7].Header = " نام کلاس ";
+             {
+                // studentsDataGrid.Columns.RemoveAt(7);
+                 studentsDataGrid.Columns[0].Header = " Id ";
+                 studentsDataGrid.Columns[1].Header = " نام کاربری";
+                 studentsDataGrid.Columns[2].Header = " کلمه عبور ";
+                 studentsDataGrid.Columns[3].Header = " نام ";
+                 studentsDataGrid.Columns[4].Header = " نام خانوادگی ";
+                 studentsDataGrid.Columns[5].Header = " نام پدر ";
+                 studentsDataGrid.Columns[6].Header = " شماره تماس ";
+                 studentsDataGrid.Columns[7].Header = " آدرس ";
+                 studentsDataGrid.Columns[8].Header = " توضیحات ";
+                 studentsDataGrid.Columns[9].Header = " نام کلاس ";
+                 studentsDataGrid.Columns[10].Header = " جنسیت ";
             }
-            catch { }
-
+             catch { }
         }
         private void changeBackgroundColor(Button sender)
         {
@@ -177,7 +180,7 @@ namespace Wpfschooldemo
         {
             List<Students> searchStudentsList = new List<Students>();
             int selectedIndex = searchComboBox.SelectedIndex;
-            string[] indextext = { "_username", "_password", "_name", "_fathername", "_phonenumber", "_major", "_classname" };
+            string[] indextext = { "username", "_password", "_name","lastname","fathername", "phone", "_address", "info", "classname","gender" };
             string searchValue = searchTextBox.Text;
             if (!string.IsNullOrWhiteSpace(searchValue))
             {
@@ -186,11 +189,6 @@ namespace Wpfschooldemo
                     searchStudentsList = db.SearchStudents(indextext[selectedIndex], searchValue);
                     studentsDataGrid.ItemsSource = searchStudentsList;
                     studentsDataGrid.IsReadOnly = true;
-                    try
-                    {
-                        studentsDataGrid.Columns.RemoveAt(7);
-                    }
-                    catch { }
                 }
             }
             else
