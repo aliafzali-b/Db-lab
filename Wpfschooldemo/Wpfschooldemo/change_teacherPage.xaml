@@ -1,0 +1,36 @@
+﻿<Page x:Class="Wpfschooldemo.change_teacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpfschooldemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="562" d:DesignWidth="843"
+      Title="change_teacherPage">
+
+    <Grid>
+        <Button x:Name="changeButton" Cursor="Hand" Content="ویرایش" HorizontalAlignment="Left" Height="34" Margin="742,518,0,0" VerticalAlignment="Top" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="changeButton_Click" IsEnabled="False"/>
+        <TextBox x:Name="oldusernameTextbox" HorizontalAlignment="Left" Height="30" Margin="505,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" TextChanged="oldusernameTextbox_TextChanged"/>
+        <TextBox x:Name="newusernameTextbox" HorizontalAlignment="Left" Height="30" Margin="505,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" />
+        <TextBox x:Name="newpasswordTextbox" HorizontalAlignment="Left" Height="30" Margin="505,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="505,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newlastnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="505,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newspecialtyTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="505,287,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newphonenumberTextbox" HorizontalAlignment="Left" Height="30" Margin="505,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="newemailTextbox" HorizontalAlignment="Left" Height="30" Margin="505,373,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <Label Content=": نام کاربری قدیمی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="688,78,0,0" VerticalAlignment="Top" Width="133" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام کاربری جدید " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="692,118,0,0" VerticalAlignment="Top" Width="129" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": کلمه عبور جدید " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="712,163,0,0" VerticalAlignment="Top" Width="109" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,203,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام خانوادگی " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,243,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": تخصص " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,287,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": جنسیت " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,416,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": شماره تماس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,327,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": پست الکترونیک " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,367,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": تغییر معلم " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="637,5,-33,0" VerticalAlignment="Top" Width="196" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
+        <ComboBox x:Name="genderComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="505,416,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
+        <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="465,78,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>
+        <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" Margin="465,79,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Visibility="Hidden"/>
+        <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" Margin="462,75,0,0" VerticalAlignment="Top" Width="38" Source="warning.png" Visibility="Hidden" />
+    </Grid>
+</Page>

@@ -19,6 +19,11 @@ namespace Wpfschooldemo
     /// </summary>
     public partial class create_teacher_page : Window
     {
+        public create_teacher_page()
+        {
+            InitializeComponent();
+        }
+        /*db-lab
         DataAccess db = new DataAccess();
         List<Classes> classesList = new List<Classes>();
         List<Courses> coursesList = new List<Courses>();
@@ -257,8 +262,8 @@ namespace Wpfschooldemo
             string name = nameTextBox.Text;
             if (username != "" && password != "" && name != "" && takhasos != "000")
             {
-                // DataAccess db = new DataAccess();
-                db.insertIntoTeachersTable(username, password, name, takhasos, classesTakhasos1, classesTakhasos2, classesTakhasos3);
+                
+                //db-lab////db.insertIntoTeachersTable(username, password, name, takhasos, classesTakhasos1, classesTakhasos2, classesTakhasos3);
                 UpdateDataGrid();
                 newstart();
             }
@@ -371,7 +376,7 @@ namespace Wpfschooldemo
                    /* l1.Visibility = Visibility.Visible;
                     l2.Visibility = Visibility.Visible;
                     l3.Visibility = Visibility.Visible;*/
-
+        /*db-lab
                 }
 
               
@@ -394,6 +399,7 @@ namespace Wpfschooldemo
                 l1.Visibility = Visibility.Hidden;
                 l2.Visibility = Visibility.Hidden;
                 l3.Visibility = Visibility.Hidden;*/
+        /*db-lab
             }
             //updateListBox();
         }
@@ -740,6 +746,7 @@ namespace Wpfschooldemo
             /* newUserNameTextBox.Text = "";
              newPasswordTextBox.Text = "";
              newNameTextBox.Text = "";*/
+        /*db-lab
             l1.Visibility = Visibility.Hidden;
             l2.Visibility = Visibility.Hidden;
             l3.Visibility = Visibility.Hidden;
@@ -772,6 +779,7 @@ namespace Wpfschooldemo
             this.Close();
             var Boss_Panel = new Boss_Panel();
             Boss_Panel.Show();
-        }
+        */
     }
+    
 }

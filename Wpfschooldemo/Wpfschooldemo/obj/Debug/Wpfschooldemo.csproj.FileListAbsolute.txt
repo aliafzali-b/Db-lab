@@ -172,3 +172,13 @@ I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.csproj.CoreCompile
 I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.csproj.CopyComplete
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.g.cs
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\change_teacherPage.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_teacherPage.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\change_teacherPage.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_teacherPage.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.baml

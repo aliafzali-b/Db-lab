@@ -32,8 +32,6 @@ namespace Wpfschooldemo
 
             genderComboBox.Items.Add("آقا");
             genderComboBox.Items.Add("خانم");
-
-
         }
         private void usernameTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {

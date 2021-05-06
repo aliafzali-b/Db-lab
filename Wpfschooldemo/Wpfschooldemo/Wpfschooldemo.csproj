@@ -67,6 +67,9 @@
     <Compile Include="change_studentPage.xaml.cs">
       <DependentUpon>change_studentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="change_teacherPage.xaml.cs">
+      <DependentUpon>change_teacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="create_Boss_Window.xaml.cs">
       <DependentUpon>create_Boss_Window.xaml</DependentUpon>
     </Compile>
@@ -76,8 +79,14 @@
     <Compile Include="create_studentPage.xaml.cs">
       <DependentUpon>create_studentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="create_teacherPage.xaml.cs">
+      <DependentUpon>create_teacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="delete_studentPage.xaml.cs">
       <DependentUpon>delete_studentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="delete_teacherPage.xaml.cs">
+      <DependentUpon>delete_teacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Karname.cs" />
@@ -88,12 +97,18 @@
     <Compile Include="seeAll_studentsPage.xaml.cs">
       <DependentUpon>seeAll_studentsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="seeAll_teachersPage.xaml.cs">
+      <DependentUpon>seeAll_teachersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Students.cs" />
     <Compile Include="StudentsOfClass.cs" />
     <Compile Include="studentsPanel.xaml.cs">
       <DependentUpon>studentsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teachers.cs" />
+    <Compile Include="teachersPanel.xaml.cs">
+      <DependentUpon>teachersPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="userGuidePage.xaml.cs">
       <DependentUpon>userGuidePage.xaml</DependentUpon>
     </Compile>
@@ -102,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="change_studentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="change_teacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,11 +144,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="create_teacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="create_teacher_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="delete_studentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="delete_teacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +193,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="seeAll_teachersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="studentsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teachersPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
