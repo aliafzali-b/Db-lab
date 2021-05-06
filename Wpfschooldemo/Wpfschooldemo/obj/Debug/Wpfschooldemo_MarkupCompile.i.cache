@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
-14783477904
+19461405361
 1-1783080343
-31-224119288
+36-1847374033
 15-986109791
-Boss_Panel.xaml;change_studentPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;studentsPanel.xaml;userGuidePage.xaml;
+Boss_Panel.xaml;change_studentPage.xaml;change_teacherPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacherPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;delete_teacherPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;seeAll_teachersPage.xaml;studentsPanel.xaml;teachersPanel.xaml;userGuidePage.xaml;
 
 True
 

@@ -165,21 +165,22 @@ namespace Wpfschooldemo
                 connection.Execute($"insert into courses values({range + 1}, N'{name}','{classes}')");
 
 
+
             }
         }
-        public void insertIntoTeachersTable(string username, string password, string name, string takhasos, string classes1, string classes2, string classes3)
+        public void insertIntoTeachersTable(string username, string password, string name,string lastname,string expert,long phone,string email,char gender,int rememberme)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM teachers").ToList();
+                    var output = connection.Query($"SELECT * FROM teacher").ToList();
                     int range = output.Count();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    connection.Execute($"insert into Teachers values({range + 1},'{username}','{password}',N'{name}','{takhasos}','{classes1}','{classes2}','{classes3}')");
-                    MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                    connection.Execute($"insert into Teacher values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{expert}',{phone},'{email}','{gender}',{rememberme})");
+                    //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch { MessageBox.Show("cant"); }
+                catch { MessageBox.Show("db error"); }
             }
         }
         public void insertIntoStudentsTable(string username, string password, string name, string lastname, string fathername, long phone, string address, string info, int classid,char gender)
@@ -242,7 +243,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from teachers order by _id").ToList();
+                var output = connection.Query<Teachers>($"select * from Teacher").ToList();
                 return output;
             }
         }
@@ -307,11 +308,11 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from teachers where _username = '{username}'").ToList();
+                var output = connection.Query<Teachers>($"select * from teacher where username = '{username}'").ToList();
                 try
                 {
                     Teachers sample = (Teachers)output[0];
-                    return sample.id;
+                    return sample.teacherid;
                 }
                 catch
                 {
@@ -392,13 +393,13 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("db error"); }
             }
         }
-        public void updateTeacherNameByUsername(string oldUsername, string newUsername, string password, string name, string takhasos, string classes1, string classes2, string classes3)
+        public void updateTeacherByUsername(string oldUsername, string newUsername, string password, string name, string lastname, string expert, long phone, string email, char gender)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    connection.Execute($"UPDATE teachers SET _username = '{newUsername}', _password = '{password}', _name = N'{name}', _takhasos = '{takhasos}' , _classes1 = '{classes1}', _classes2= '{classes2}', _classes3 = '{classes3}' WHERE _username = '{oldUsername}';");
+                    connection.Execute($"UPDATE teacher SET username = '{newUsername}', _password = '{password}', _name = N'{name}',lastname =N'{lastname}',expert= N'{expert}',phone = {phone},email='{email}',gender='{gender}' WHERE username = '{oldUsername}';");
                     MessageBox.Show("با موفقیت تغیر یافت", "successful", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("db error"); }
@@ -475,13 +476,12 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from teachers where _username = '{username}'").ToList();
+                var output = connection.Query<Classes>($"select * from teacher where username = '{username}'").ToList();
                 int range = output.Count();
                 if (range == 0 && !string.IsNullOrWhiteSpace(username))
                     return true;
                 else
                     return false;
-
             }
         }
         public bool isStudentNameValid(string username)
@@ -751,7 +751,7 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Student(StuID int NOT NULL,Username varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,LastName nvarchar(255) NOT NULL,FatherName nvarchar(255) NOT NULL,Phone bigint NOT NULL,_Address nvarchar(255) NULL,Info nvarchar(255) NULL,ClassID int NULL,Gender char(1) NULL,PRIMARY KEY CLUSTERED(StuID),CONSTRAINT CheckStudent check(Gender = 'M' OR Gender = 'F'),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade);" +
                         $"CREATE TABLE Exam(ExamID int NOT NULL,CourseID int NOT NULL,ClassID int NOT NULL,_Date datetime NOT NULL,Ratio float(10) NOT NULL,Info nvarchar(255) NULL,Status char(1) NULL,PRIMARY KEY(ExamID),FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade );" +
                         $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade smallmoney NULL,FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
-                        $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
+                        $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Phone bigint NOT NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,_Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
                     //MessageBox.Show("Success");

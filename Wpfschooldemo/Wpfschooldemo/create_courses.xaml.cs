@@ -270,7 +270,7 @@ namespace Wpfschooldemo
                     int i = 0;
                     
                     teachersList = db.GetTeachers();
-                    foreach (Teachers myteacher in teachersList)
+                    /*db-lab foreach (Teachers myteacher in teachersList)
                     {
                         takhasos = myteacher.takhasos;
                         char[] tchar = takhasos.ToCharArray();
@@ -304,10 +304,10 @@ namespace Wpfschooldemo
                           
                         }
                         
-                       /* classesTakhasos1 = myteacher.classes1;
-                        classesTakhasos2 = "000000000000000000000";
-                        classesTakhasos3 = "000000000000000000000";*/
-                    }
+                        //classesTakhasos1 = myteacher.classes1;
+                        //classesTakhasos2 = "000000000000000000000";
+                        //classesTakhasos3 = "000000000000000000000";
+                    }*/
 
                     uncheckAll();
                     updateDataGrid();

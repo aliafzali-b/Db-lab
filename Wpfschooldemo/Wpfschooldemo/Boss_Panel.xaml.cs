@@ -48,8 +48,9 @@ namespace Wpfschooldemo
         {
             this.Closed -= Boss_Panel_Closed;
             this.Close();
-            var create_teacher_page = new create_teacher_page();
-            create_teacher_page.Show();
+            //var create_teacher_page = new create_teacher_page();
+            var teachersPanel = new teachersPanel();
+            teachersPanel.Show();
         }
 
         private void studentImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
