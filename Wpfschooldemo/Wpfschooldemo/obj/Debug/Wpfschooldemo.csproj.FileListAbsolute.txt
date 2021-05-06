@@ -170,3 +170,5 @@ I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.Properties.Resourc
 I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.csproj.GenerateResource.cache
 I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.csproj.CoreCompileInputs.cache
 I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\Wpfschooldemo.csproj.CopyComplete
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.baml
