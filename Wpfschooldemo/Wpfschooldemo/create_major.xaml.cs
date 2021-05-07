@@ -18,7 +18,7 @@ namespace Wpfschooldemo
     /// <summary>
     /// Interaction logic for create_major.xaml
     /// </summary>
-    public partial class create_major : Page
+    public partial class create_major : Window
     {
         DataAccess db = new DataAccess();
         List<Major> classesList = new List<Major>();
@@ -27,7 +27,14 @@ namespace Wpfschooldemo
             
             InitializeComponent();
 
-            
+            this.Closed += new EventHandler(create_major_Closed);
+
+        }
+
+
+        void create_major_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,7 +44,7 @@ namespace Wpfschooldemo
             try { code = Int32.Parse(codeTextbox.Text); } catch { }
             
 
-            if(name != "")
+            if(name != "" && code != -1)
             {
                 db.insertIntoMajorTable(name, code);
                 clearAllTextBoxes();
@@ -60,6 +67,7 @@ namespace Wpfschooldemo
 
         private void nameTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //MessageBox.Show("اجرا");
             bool isvalid = db.isMajorNameValid(nameTextbox.Text);
             if (isvalid == true)
             {
@@ -89,5 +97,12 @@ namespace Wpfschooldemo
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         { }
 
+        private void returnImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Closed -= create_major_Closed;
+            this.Close();
+            var create_class = new create_class();
+            create_class.Show();
+        }
     }
 }

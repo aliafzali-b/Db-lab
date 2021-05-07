@@ -182,3 +182,15 @@ C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_te
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.baml
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.baml
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\change_teacherPage.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_teacherPage.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.g.cs
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\change_teacherPage.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_major.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_teacherPage.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.baml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.baml
