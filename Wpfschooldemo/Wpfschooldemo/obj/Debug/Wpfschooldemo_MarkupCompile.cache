@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 I:\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
-13-1795646128
+14783477904
 1-1783080343
-27-548899497
+29-213993505
 15-1143722309
-Boss_Panel.xaml;change_studentPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_studentPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;studentsPanel.xaml;userGuidePage.xaml;
+Boss_Panel.xaml;change_studentPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;studentsPanel.xaml;userGuidePage.xaml;
 
-False
+True
 

@@ -30,5 +30,6 @@
             <Label x:Name="nameLable" Content=": نام جدید" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="235" Canvas.Top="124"/>
             <TextBox x:Name="textBox2" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontSize="16" Canvas.Left="46" Canvas.Top="127"/>
         </Canvas>
+        <Button x:Name="AddMajorButton" Content="اضافه کردن رشته" HorizontalAlignment="Left" Margin="175,380,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Cursor="Hand" Visibility="Visible"/>
     </Grid>
 </Window>
