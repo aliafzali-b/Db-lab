@@ -141,15 +141,15 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("cant"); }
             }
         }
-        public void insertIntoClasses(string name)
+        public void insertIntoClasses(string name,string Year,int MajorID,int ChairNum,int BranchNum)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
 
-                var output = connection.Query($"SELECT * FROM classes").ToList();
+                var output = connection.Query($"SELECT * FROM class").ToList();
                 int range = output.Count();
                 // MessageBox.Show("its id will be " + (range + 1).ToString());
-                connection.Execute($"insert into classes values({range + 1}, N'{name}')");
+                connection.Execute($"insert into class values({range + 1}, N'{name}',{MajorID},{BranchNum},N'{Year}',{ChairNum})");
 
 
             }
@@ -208,9 +208,11 @@ namespace Wpfschooldemo
                 {
                     var output = connection.Query($"SELECT * FROM Major").ToList();
                     int range = output.Count();
-                    //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    connection.Execute($"insert into Major values({range},N'{name}',{code}");
-                    //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("its id will be " + (range + 1).ToString());
+                    connection.Execute($"insert into Major values({range},N'{name}',{code})");
+                    //connection.Execute($"insert into Major values(4,N'{تست4',5)")
+
+                    MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("cant"); }
             }
@@ -220,6 +222,16 @@ namespace Wpfschooldemo
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 var output = connection.Query<Classes>($"select * from class").ToList();
+                return output;
+            }
+        }
+
+
+        public List<Major> GetMajor()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                var output = connection.Query<Major>($"select * from Major").ToList();
                 return output;
             }
         }
@@ -463,7 +475,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from classes where _name = N'{name}'").ToList();
+                var output = connection.Query<Classes>($"select * from class where _name = N'{name}'").ToList();
                 int range = output.Count();
                 if (range == 0 && !string.IsNullOrWhiteSpace(name))
                     return true;
@@ -501,7 +513,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Major>($"select * from Major where _Name = '{name}'").ToList();
+                var output = connection.Query<Major>($"select * from Major where _Name = N'{name}'").ToList();
                 int range = output.Count();
                 if (range == 0 && !string.IsNullOrWhiteSpace(name))
                     return true;

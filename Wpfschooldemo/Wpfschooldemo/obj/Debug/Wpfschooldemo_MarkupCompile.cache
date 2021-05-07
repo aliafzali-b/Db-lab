@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
 Wpfschooldemo
 none
 false
 DEBUG;TRACE
-C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
 19461405361
 1-1783080343
 35-1005014666
-15-986109791
+15-1143722309
 Boss_Panel.xaml;change_studentPage.xaml;change_teacherPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacherPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;delete_teacherPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;seeAll_teachersPage.xaml;studentsPanel.xaml;teachersPanel.xaml;userGuidePage.xaml;
 
 False
