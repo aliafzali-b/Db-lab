@@ -182,3 +182,5 @@ C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\create_te
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\delete_teacherPage.baml
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\seeAll_teachersPage.baml
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teachersPanel.baml
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teacherClasses.g.cs
+C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\teacherClasses.baml

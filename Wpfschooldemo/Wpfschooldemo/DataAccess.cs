@@ -168,6 +168,17 @@ namespace Wpfschooldemo
 
             }
         }
+        public void insertIntoCoCoT(int courseid, int classid,int teacherid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    connection.Execute($"insert into cocot values({courseid}, {classid},{teacherid})");
+                }
+                catch { MessageBox.Show("db error"); }
+            }
+        }
         public void insertIntoTeachersTable(string username, string password, string name,string lastname,string expert,long phone,string email,char gender,int rememberme)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
@@ -280,7 +291,7 @@ namespace Wpfschooldemo
                 try
                 {
                     Classes sample = (Classes)output[0];
-                    return sample.id;
+                    return sample.classid;
                 }
                 catch
                 {
@@ -296,7 +307,7 @@ namespace Wpfschooldemo
                 try
                 {
                     Courses sample = (Courses)output[0];
-                    return sample.id;
+                    return sample.courseid;
                 }
                 catch
                 {
@@ -517,7 +528,7 @@ namespace Wpfschooldemo
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM teachers").ToList();
+                    /*db-lab var output = connection.Query($"SELECT * FROM teachers").ToList();
                     int range = output.Count();
                     int deleteID = GetTeacherIdByUsername(username);
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
@@ -525,10 +536,49 @@ namespace Wpfschooldemo
                     for (int i = deleteID; i < range; i++)
                     {
                         connection.Execute($"UPDATE teachers SET _id = {i} WHERE _id = {i + 1};");
-                    }
+                    }*/
+                    int deleteID = GetTeacherIdByUsername(username);
+                    connection.Execute($"delete from cocot where teacherid = {deleteID}");
+                    connection.Execute($"DELETE FROM Teacher WHERE teacherid = {deleteID}");
+                    connection.Execute($"UPDATE Teacher SET teacherid = teacherid-1 WHERE teacherid > {deleteID} ");
                     MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch { MessageBox.Show("db error"); }
+            }
+        }
+        public void deleteCoCoT(int courseid,int classid , int teacherid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    connection.Execute($"Delete from CoCoT WHERE courseid = {courseid} and classid= {classid} and teacherid={teacherid} ");
+                    MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("db error"); }
+            }
+        }
+        public List<CoCoT> GetTeacherCoCotById(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    /*db-lab var output = connection.Query($"SELECT * FROM teachers").ToList();
+                    int range = output.Count();
+                    int deleteID = GetTeacherIdByUsername(username);
+                    //MessageBox.Show("its id will be " + (range + 1).ToString());
+                    connection.Execute($"delete from Teachers where _username = '{username}'");
+                    for (int i = deleteID; i < range; i++)
+                    {
+                        connection.Execute($"UPDATE teachers SET _id = {i} WHERE _id = {i + 1};");
+                    }*/
+                    var output = connection.Query<CoCoT>($"SELECT * FROM CoCoT where TeacherID = {id}").ToList();
+                    return output;
+                    //MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("db error");}
+                return null;
             }
         }
         public void deleteStudentByUserName(string username)
@@ -537,10 +587,8 @@ namespace Wpfschooldemo
             {
                 try
                 {
-                    var output = connection.Query($"SELECT * FROM Student").ToList();
-                    int range = output.Count();
                     int deleteID = GetStudentIdByUsername(username);
-                    MessageBox.Show("its id is " + deleteID.ToString());
+                    //MessageBox.Show("its id is " + deleteID.ToString());
                     //connection.Execute($"delete from Students where _username = '{username}'");
                     connection.Execute($"delete from grade where stuid = {deleteID}");
                     connection.Execute($"DELETE FROM Student WHERE Stuid = {deleteID}");
@@ -606,7 +654,7 @@ namespace Wpfschooldemo
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
 
-                int counter;
+                /*int counter;
                 List<Courses> CoursesList = GetCourses();
                 List<Students> StudentsList = new List<Students>();
                 foreach (Courses sample in CoursesList)
@@ -631,7 +679,7 @@ namespace Wpfschooldemo
                     }
                 }
 
-
+                */
             }
         }
 
@@ -640,7 +688,7 @@ namespace Wpfschooldemo
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
 
-                int counter;
+               /* int counter;
                 List<Courses> CoursesList = GetCourses();
                 foreach (Courses sample in CoursesList)
                 {
@@ -658,7 +706,7 @@ namespace Wpfschooldemo
                         counter++;
                     }
                 }
-
+               */
             }
         }
 
@@ -667,7 +715,7 @@ namespace Wpfschooldemo
             //this method will change your student properties in class lists
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                int counter;
+               /* int counter;
                 List<Courses> CoursesList = GetCourses();
                 List<Students> StudentsList = GetStudents();
                 foreach (Courses sample in CoursesList)
@@ -684,7 +732,7 @@ namespace Wpfschooldemo
                         counter++;
                     }
                 }
-
+               */
 
             }
         }
@@ -693,7 +741,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                List<Courses> CoursesList = GetCourses();
+                /*List<Courses> CoursesList = GetCourses();
                 List<Students> StudentsList = GetStudents();
                 int classid = StudentsList[stuid - 1].classid;
                 foreach (Courses sample in CoursesList)
@@ -702,7 +750,9 @@ namespace Wpfschooldemo
                     if (classesBinary[classid-1] == '1' && should_We_Add_This_Student_To_Class(stuid, classid, sample.id))
                         connection.Execute($"INSERT INTO Course{sample.id}_Of_class{classid} (_stuid, _name, _fathername) values({stuid},N'{StudentsList[stuid - 1]._name}',N'{StudentsList[stuid - 1].fathername}')");
                 }
+                */
             }
+
         }
         public Karname GetStudentsGradeIn_course_a_of_class_b(int stuid, int courseid, int classid)
         {

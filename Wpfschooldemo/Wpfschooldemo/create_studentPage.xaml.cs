@@ -28,7 +28,7 @@ namespace Wpfschooldemo
             InitializeComponent();
             classesList = db.GetClasses();
             foreach (Classes sample in classesList)
-                classesComboBox.Items.Add(sample.name);
+                classesComboBox.Items.Add(sample._name);
 
             genderComboBox.Items.Add("آقا");
             genderComboBox.Items.Add("خانم");

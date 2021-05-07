@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,6 +72,7 @@
     <Compile Include="change_teacherPage.xaml.cs">
       <DependentUpon>change_teacherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CoCoT.cs" />
     <Compile Include="create_Boss_Window.xaml.cs">
       <DependentUpon>create_Boss_Window.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
     <Compile Include="StudentsOfClass.cs" />
     <Compile Include="studentsPanel.xaml.cs">
       <DependentUpon>studentsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="teacherClasses.xaml.cs">
+      <DependentUpon>teacherClasses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teachers.cs" />
     <Compile Include="teachersPanel.xaml.cs">
@@ -198,6 +204,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="studentsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="teacherClasses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

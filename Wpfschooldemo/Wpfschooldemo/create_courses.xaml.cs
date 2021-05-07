@@ -43,7 +43,7 @@ namespace Wpfschooldemo
             }
             foreach (Classes sample in classesList)
             {
-                checkbx[sample.id - 1].Content = sample.name; // because id start's with 1 but checkbx's andise start's from 0
+                checkbx[sample.classid - 1].Content = sample._name; // because id start's with 1 but checkbx's andise start's from 0
                 show_checkBoxes(true);
             }
         }
@@ -106,7 +106,7 @@ namespace Wpfschooldemo
                 checkAllImage.Visibility = Visibility.Visible;
                 foreach (Classes sample in classesList)
                 {
-                    checkbx[sample.id - 1].Visibility = Visibility.Visible; // because id start's with 1 but checkbx's andise start's from 0
+                    checkbx[sample.classid - 1].Visibility = Visibility.Visible; // because id start's with 1 but checkbx's andise start's from 0
                 }
             }
             if (visibility == false)
@@ -115,7 +115,7 @@ namespace Wpfschooldemo
                 checkAllImage.Visibility = Visibility.Hidden;
                 foreach (Classes sample in classesList)
                 {
-                    checkbx[sample.id - 1].Visibility = Visibility.Hidden; // because id start's with 1 but checkbx's andise start's from 0
+                    checkbx[sample.classid - 1].Visibility = Visibility.Hidden; // because id start's with 1 but checkbx's andise start's from 0
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace Wpfschooldemo
 
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            coursesList = db.GetCourses();
+            /*coursesList = db.GetCourses();
             bool isvalid = db.isCourseNameValid(textBox1.Text);
             if (isvalid == true)
             {
@@ -190,6 +190,7 @@ namespace Wpfschooldemo
                 show_checkBoxes(false);
                 uncheckAll();
             }
+            */
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -226,9 +227,9 @@ namespace Wpfschooldemo
             Courses mycourse = (Courses)dataGrid1.SelectedItem;
             if (mycourse != null)
             {
-                int selectedId = (mycourse.id)-1;
+                int selectedId = (mycourse.courseid)-1;
                 if (selectedId >= 0)
-                    textBox1.Text = coursesList[selectedId].name;
+                    textBox1.Text = coursesList[selectedId]._name;
             } 
         }
         private void checkAllButton_Click(object sender, RoutedEventArgs e)
@@ -343,7 +344,7 @@ namespace Wpfschooldemo
             Boss_Panel.Show();
         }
         private void updateListOfClasses()
-        {
+        {/*
             //AutoClosingMessageBox.Show("لصفا تا آماده سازی لیست کلاس ها منتظر بمانید", "please wait", 1000);
             int counter;
             coursesList = db.GetCourses();
@@ -374,7 +375,7 @@ namespace Wpfschooldemo
                 {
                     db.Add_One_Student_Values_In_Classes_List(stuid);
                 }
-            }
+            }*/
         }
         private int find_Symbol_In_S_Array(char input)
         {

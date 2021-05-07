@@ -29,7 +29,7 @@ namespace Wpfschooldemo
             classesList = db.GetClasses();
             studentsList = db.GetStudents();
             foreach (Classes sample in classesList)
-                classesComboBox.Items.Add(sample.name);
+                classesComboBox.Items.Add(sample._name);
             oldusernameTextbox.Text = Globals.cache;
 
             genderComboBox.Items.Add("آقا");

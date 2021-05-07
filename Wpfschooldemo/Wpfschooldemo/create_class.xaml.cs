@@ -114,10 +114,10 @@ namespace Wpfschooldemo
             Classes myclass = (Classes)dataGrid1.SelectedItem;
             if (myclass != null)
             {
-                int selectedId = myclass.id - 1;
+                int selectedId = myclass.classid - 1;
                 if (selectedId >= 0)
-                    textBox1.Text = classlist[selectedId].name;
-            }    
+                    textBox1.Text = classlist[selectedId]._name;
+            } 
         }
 
         private void changeButton_Click(object sender, RoutedEventArgs e)

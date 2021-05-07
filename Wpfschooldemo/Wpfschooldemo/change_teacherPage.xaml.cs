@@ -28,9 +28,10 @@ namespace Wpfschooldemo
         public change_teacherPage()
         {
             InitializeComponent();
-
+            
             genderComboBox.Items.Add("آقا");
             genderComboBox.Items.Add("خانم");
+            oldusernameTextbox.Text = Globals.cache;
         }
         void change_teacherPage_Closed(object sender, EventArgs e)
         {

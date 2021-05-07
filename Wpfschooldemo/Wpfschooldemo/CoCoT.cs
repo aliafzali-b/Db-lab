@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace Wpfschooldemo
 {
-    class Courses
+    class CoCoT
     {
         public int courseid { get; set; }
-        public string _name { get; set; }
-        public string unit { get; set; }
-        public int ccode
-        {
-            get;
-            set;
-        }
-        
+        public int classid { get; set; }
+        public int teacherid { get; set; }
+
     }
 }

@@ -90,7 +90,7 @@ namespace Wpfschooldemo
         private void specialtyViewButton_Click(object sender, RoutedEventArgs e)
         {
             changeBackgroundColor((Button)sender);
-            //studentsPanelPage.Content = new Karname_page();
+            teachersPanelPage.Content = new teacherClasses();
             VeiwAll(0);
         }
         public void seeAllViewButton_Click(object sender, RoutedEventArgs e)
@@ -133,39 +133,40 @@ namespace Wpfschooldemo
             }
         }
         ///------------------------------------------------------------------------------------button functions ends
-        ///
+       
+
 
         ///------------------------------------------------------------------------------------Right click functions
         private void changeRightClick(object sender, RoutedEventArgs e)
         {
-            Students mystudent = (Students)teachersDataGrid.SelectedItem;
+            Teachers myteacher = (Teachers)teachersDataGrid.SelectedItem;
             int selectedId = teachersDataGrid.SelectedIndex;
             if (selectedId >= 0)
             {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
+                Globals.cache = myteacher.username;
+                //change_studentPage changepage = new change_studentPage();
                 changeViewButton_Click(changeViewButton, e);
             }
         }
-        private void karnameRightClick(object sender, RoutedEventArgs e)
+        private void specialtyRightClick(object sender, RoutedEventArgs e)
         {
-            Students mystudent = (Students)teachersDataGrid.SelectedItem;
-            int selectedId = teachersDataGrid.SelectedIndex;
-            /*if (selectedId >= 0)
-            {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
-                karnameViewButton_Click(karnameViewButton, e);
-            }*/
-        }
-        private void deleteRightClick(object sender, RoutedEventArgs e)
-        {
-            Students mystudent = (Students)teachersDataGrid.SelectedItem;
+            Teachers myteacher = (Teachers)teachersDataGrid.SelectedItem;
             int selectedId = teachersDataGrid.SelectedIndex;
             if (selectedId >= 0)
             {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
+                Globals.cache = myteacher.username;
+                //change_studentPage changepage = new change_studentPage();
+                specialtyViewButton_Click(specialtyViewButton, e);
+            }
+        }
+        private void deleteRightClick(object sender, RoutedEventArgs e)
+        {
+            Teachers myteacher = (Teachers)teachersDataGrid.SelectedItem;
+            int selectedId = teachersDataGrid.SelectedIndex;
+            if (selectedId >= 0)
+            {
+                Globals.cache = myteacher.username;
+                //change_studentPage changepage = new change_studentPage();
                 deleteViewButton_Click(deleteViewButton, e);
             }
         }

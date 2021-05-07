@@ -99,7 +99,7 @@ namespace Wpfschooldemo
 
         private void createClassLists_Click(object sender, RoutedEventArgs e)
         {
-            int counter;
+            /*int counter;
             CoursesList = db.GetCourses();
             foreach (Courses sample in CoursesList)
             {
@@ -113,12 +113,12 @@ namespace Wpfschooldemo
                         db.dropcourse_a_ofclass_b_Table(sample.id, counter);
                     counter++;
                 }
-            }
+            }*/
         }
 
         private void deleteStudents_Click(object sender, RoutedEventArgs e)
         {
-            int counter;
+            /*int counter;
             CoursesList = db.GetCourses();
             foreach (Courses sample in CoursesList)
             {
@@ -132,7 +132,7 @@ namespace Wpfschooldemo
                         db.dropcourse_a_ofclass_b_Table(sample.id, counter);
                     counter++;
                 }
-            }
+            }*/
         }
         private void Image_MouseEnter(object sender, RoutedEventArgs e)
         {

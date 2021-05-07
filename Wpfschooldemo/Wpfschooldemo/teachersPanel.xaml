@@ -27,7 +27,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu HorizontalContentAlignment="Right">
                     <MenuItem Header="ویرایش اطلاعات" Click="changeRightClick" />
-                    <MenuItem Header="مشاهده کارنامه"  Click="karnameRightClick"/>
+                    <MenuItem Header="تدریس"  Click="specialtyRightClick"/>
                     <MenuItem Header="حذف" Click="deleteRightClick" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
