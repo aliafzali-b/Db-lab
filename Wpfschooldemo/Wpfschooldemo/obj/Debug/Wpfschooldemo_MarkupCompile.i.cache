@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\obj\Debug\
 Wpfschooldemo
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Ali\source\repos\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
 20-129907040
 1-1783080343
 38-490289092
 17-1159996722
 Boss_Panel.xaml;change_studentPage.xaml;change_teacherPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacherPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;delete_teacherPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;seeAll_teachersPage.xaml;studentsPanel.xaml;teacherClasses.xaml;teachersPanel.xaml;userGuidePage.xaml;
+=======
+I:\Db-lab\Wpfschooldemo\Wpfschooldemo\App.xaml
+19461405361
+1-1783080343
+36-1847374033
+15-1143722309
+Boss_Panel.xaml;change_studentPage.xaml;change_teacherPage.xaml;create_Boss_Window.xaml;create_class.xaml;create_courses.xaml;create_major.xaml;create_studentPage.xaml;create_teacherPage.xaml;create_teacher_page.xaml;delete_studentPage.xaml;delete_teacherPage.xaml;Karname_page.xaml;MainWindow.xaml;seeAll_studentsPage.xaml;seeAll_teachersPage.xaml;studentsPanel.xaml;teachersPanel.xaml;userGuidePage.xaml;
+>>>>>>> 977b5ff12397c450c3b33ebc4e66c1b83c175139
 
 True
 

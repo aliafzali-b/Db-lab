@@ -20,6 +20,7 @@ namespace Wpfschooldemo
     public partial class create_class : Window
     {
         List<Classes> classlist = new List<Classes>();
+        List<Major> classesList = new List<Major>();
         DataAccess db = new DataAccess();
         public create_class()
         {
@@ -27,6 +28,12 @@ namespace Wpfschooldemo
             db.createClassesTable();
             classlist = db.GetClasses();
             textBox1.Text = "for excute onchange text function";
+
+            classesList = db.GetMajor();
+            foreach (Major sample in classesList)
+                MajorComboBox.Items.Add(sample.name);
+
+
             updateDataGrid();
             this.Closed += new EventHandler(create_class_Closed);
 
@@ -102,8 +109,22 @@ namespace Wpfschooldemo
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            if (db.isClassNameValid(textBox1.Text))
-                db.insertIntoClasses(textBox1.Text);
+
+            string ClassName = textBox1.Text;
+            int Chairnum = -1;
+            try { Chairnum = Int32.Parse(TextBoxChairNum.Text); } catch { }
+
+            int BranchNum = -1;
+            try { BranchNum = Int32.Parse(TextBoxBranchNum.Text); } catch { }
+
+            string Year = TextBoxYear.Text;
+
+            int MajorID = MajorComboBox.SelectedIndex;
+
+
+
+            if (db.isClassNameValid(textBox1.Text) && ClassName != "" && Year != "" && Chairnum >= 0 && MajorID >=0 && BranchNum >=0)
+                db.insertIntoClasses(ClassName,Year,MajorID,Chairnum,BranchNum);
             else
                 MessageBox.Show("ورودی نامعتبر", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             updateDataGrid();
@@ -139,6 +160,19 @@ namespace Wpfschooldemo
             this.Close();
             var Boss_Panel = new Boss_Panel();
             Boss_Panel.Show();
+        }
+
+        private void AddMajorButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Closed -= create_class_Closed;
+            this.Close();
+            var create_major = new create_major();
+            create_major.Show();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
