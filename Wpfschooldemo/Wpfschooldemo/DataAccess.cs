@@ -282,7 +282,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from teachers where {type} like N'%{value}%'").ToList();
+                var output = connection.Query<Teachers>($"select * from teacher where {type} like N'%{value}%'").ToList();
                 return output;
             }
         }
