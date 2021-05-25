@@ -91,6 +91,9 @@
     <Compile Include="delete_teacherPage.xaml.cs">
       <DependentUpon>delete_teacherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="function_teacherPage.xaml.cs">
+      <DependentUpon>function_teacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Karname.cs" />
     <Compile Include="Karname_page.xaml.cs">
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="delete_teacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="function_teacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

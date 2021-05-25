@@ -78,6 +78,7 @@ namespace Wpfschooldemo
             specialtyViewButton.Background = new SolidColorBrush(normalColor);
             seeAllViewButton.Background = new SolidColorBrush(normalColor);
             deleteViewButton.Background = new SolidColorBrush(normalColor);
+            FunctionViewButton.Background = new SolidColorBrush(normalColor);
             sender.Background = new SolidColorBrush(selectedColor);
         }
 
@@ -111,6 +112,12 @@ namespace Wpfschooldemo
         {
             changeBackgroundColor((Button)sender);
             teachersPanelPage.Content = new delete_teacherPage();
+            VeiwAll(0);
+        }
+        private void FunctionViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            changeBackgroundColor((Button)sender);
+            teachersPanelPage.Content = new function_teacherPage();
             VeiwAll(0);
         }
         private void returnImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
