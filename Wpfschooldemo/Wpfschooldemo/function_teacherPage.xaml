@@ -1,0 +1,27 @@
+﻿<Page x:Class="Wpfschooldemo.function_teacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpfschooldemo"
+      mc:Ignorable="d" 
+      
+      d:DesignHeight="562" d:DesignWidth="843"
+      Title="function_teacherPage">
+
+    <Grid>
+        <DataGrid x:Name="resultDataGrid" HorizontalAlignment="Left" Height="346" Margin="10,199,0,0" VerticalAlignment="Top" Width="820" FontFamily="B nazanin" FontSize="20" >
+        </DataGrid>
+        <Button x:Name="f1Button" Content="نزدیک ترین فعالیت های دانش آموز" HorizontalAlignment="Left" Margin="581,160,0,368" Width="250" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="f1Button_Click"/>
+        <Button x:Name="f2Button" Content="دانش آموزانی که هر 3 این معلم ها را دارند" HorizontalAlignment="Left" Margin="259,160,0,368" Width="298" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="f2Button_Click"/>
+        <Button x:Name="f3Button" Content="بهترین معلمان مدرسه" HorizontalAlignment="Left" Margin="38,160,0,368" Width="181" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="f3Button_Click"/>
+
+        <TextBox x:Name="studentUsernameTextbox" HorizontalAlignment="Left" Height="30" Margin="581,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontSize="18" />
+        <TextBox x:Name="t1UsernameTextbox" HorizontalAlignment="Left" Height="30" Margin="259,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="298" FontSize="18"  />
+        <TextBox x:Name="t2UsernameTextbox" HorizontalAlignment="Left" Height="30" Margin="259,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="298" FontSize="18"  />
+        <TextBox x:Name="t3UsernameTextbox" HorizontalAlignment="Left" Height="30" Margin="259,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="298" FontSize="18" />
+        <Label Content=": نام کاربری دانش آموز " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="684,85,0,0" VerticalAlignment="Top" Width="147" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام کاربری معلمان " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="410,10,0,0" VerticalAlignment="Top" Width="147" FontSize="18" FontFamily="B nazanin"/>
+
+    </Grid>
+</Page>

@@ -188,6 +188,22 @@ namespace Wpfschooldemo
                     searchStudentsList = db.SearchStudents(indextext[selectedIndex], searchValue);
                     studentsDataGrid.ItemsSource = searchStudentsList;
                     studentsDataGrid.IsReadOnly = true;
+                    try
+                    {
+                        // studentsDataGrid.Columns.RemoveAt(7);
+                        studentsDataGrid.Columns[0].Header = " Id ";
+                        studentsDataGrid.Columns[1].Header = " نام کاربری";
+                        studentsDataGrid.Columns[2].Header = " کلمه عبور ";
+                        studentsDataGrid.Columns[3].Header = " نام ";
+                        studentsDataGrid.Columns[4].Header = " نام خانوادگی ";
+                        studentsDataGrid.Columns[5].Header = " نام پدر ";
+                        studentsDataGrid.Columns[6].Header = " شماره تماس ";
+                        studentsDataGrid.Columns[7].Header = " آدرس ";
+                        studentsDataGrid.Columns[8].Header = " توضیحات ";
+                        studentsDataGrid.Columns[9].Header = " نام کلاس ";
+                        studentsDataGrid.Columns[10].Header = " جنسیت ";
+                    }
+                    catch { }
                 }
             }
             else

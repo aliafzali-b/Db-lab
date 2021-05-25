@@ -33,6 +33,15 @@ namespace Wpfschooldemo
             normalColor = Color.FromArgb(0xFF, 0x42, 0x42, 0x42);
             selectedColor = Color.FromArgb(0xFF, 0x7E, 0x7E, 0x7E);
             changeBackgroundColor(seeAllViewButton);
+
+            searchComboBox.Items.Add("نام کاربری");
+            searchComboBox.Items.Add("کلمه عبور");
+            searchComboBox.Items.Add("نام");
+            searchComboBox.Items.Add("نام خانوادگی");
+            searchComboBox.Items.Add("تخصص");
+            searchComboBox.Items.Add("شماره تماس");
+            searchComboBox.Items.Add("پست الکترونیک");
+            searchComboBox.Items.Add("جنسیت");
         }
         void teachersPanel_Closed(object sender, EventArgs e)
         {
@@ -49,18 +58,16 @@ namespace Wpfschooldemo
             teachersDataGrid.IsReadOnly = true;
             try
             {
-                // studentsDataGrid.Columns.RemoveAt(7);
+                teachersDataGrid.Columns.RemoveAt(9);
                 teachersDataGrid.Columns[0].Header = " Id ";
                 teachersDataGrid.Columns[1].Header = " نام کاربری";
                 teachersDataGrid.Columns[2].Header = " کلمه عبور ";
                 teachersDataGrid.Columns[3].Header = " نام ";
                 teachersDataGrid.Columns[4].Header = " نام خانوادگی ";
-                teachersDataGrid.Columns[5].Header = " نام پدر ";
+                teachersDataGrid.Columns[5].Header = " تخصص ";
                 teachersDataGrid.Columns[6].Header = " شماره تماس ";
-                teachersDataGrid.Columns[7].Header = " آدرس ";
-                teachersDataGrid.Columns[8].Header = " توضیحات ";
-                teachersDataGrid.Columns[9].Header = " نام کلاس ";
-                teachersDataGrid.Columns[10].Header = " جنسیت ";
+                teachersDataGrid.Columns[7].Header = " پست الکترونیک ";
+                teachersDataGrid.Columns[8].Header = " جنسیت ";
             }
             catch { }
         }
@@ -71,6 +78,7 @@ namespace Wpfschooldemo
             specialtyViewButton.Background = new SolidColorBrush(normalColor);
             seeAllViewButton.Background = new SolidColorBrush(normalColor);
             deleteViewButton.Background = new SolidColorBrush(normalColor);
+            FunctionViewButton.Background = new SolidColorBrush(normalColor);
             sender.Background = new SolidColorBrush(selectedColor);
         }
 
@@ -104,6 +112,12 @@ namespace Wpfschooldemo
         {
             changeBackgroundColor((Button)sender);
             teachersPanelPage.Content = new delete_teacherPage();
+            VeiwAll(0);
+        }
+        private void FunctionViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            changeBackgroundColor((Button)sender);
+            teachersPanelPage.Content = new function_teacherPage();
             VeiwAll(0);
         }
         private void returnImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -173,17 +187,31 @@ namespace Wpfschooldemo
         ///------------------------------------------------------------------------------------Right click functions ends
         private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            List<Students> searchStudentsList = new List<Students>();
+            List<Teachers> searchTeachersList = new List<Teachers>();
             int selectedIndex = searchComboBox.SelectedIndex;
-            string[] indextext = { "username", "_password", "_name", "lastname", "fathername", "phone", "_address", "info", "classname", "gender" };
+            string[] indextext = { "username", "_password", "_name", "lastname", "Expert", "phone", "email", "gender"};
             string searchValue = searchTextBox.Text;
             if (!string.IsNullOrWhiteSpace(searchValue))
             {
                 if (selectedIndex != -1)
                 {
-                    searchStudentsList = db.SearchStudents(indextext[selectedIndex], searchValue);
-                    teachersDataGrid.ItemsSource = searchStudentsList;
+                    searchTeachersList = db.SearchTeachers(indextext[selectedIndex], searchValue);
+                    teachersDataGrid.ItemsSource = searchTeachersList;
                     teachersDataGrid.IsReadOnly = true;
+                    try
+                    {
+                        teachersDataGrid.Columns.RemoveAt(9);
+                        teachersDataGrid.Columns[0].Header = " Id ";
+                        teachersDataGrid.Columns[1].Header = " نام کاربری";
+                        teachersDataGrid.Columns[2].Header = " کلمه عبور ";
+                        teachersDataGrid.Columns[3].Header = " نام ";
+                        teachersDataGrid.Columns[4].Header = " نام خانوادگی ";
+                        teachersDataGrid.Columns[5].Header = " تخصص ";
+                        teachersDataGrid.Columns[6].Header = " شماره تماس ";
+                        teachersDataGrid.Columns[7].Header = " پست الکترونیک ";
+                        teachersDataGrid.Columns[8].Header = " جنسیت ";
+                    }
+                    catch { }
                 }
             }
             else

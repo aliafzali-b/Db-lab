@@ -282,7 +282,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from teachers where {type} like N'%{value}%'").ToList();
+                var output = connection.Query<Teachers>($"select * from teacher where {type} like N'%{value}%'").ToList();
                 return output;
             }
         }
@@ -786,9 +786,14 @@ namespace Wpfschooldemo
                 da.Fill(dataTable);
                 da.Dispose(); // i dont know what this is
                 return dataTable;
+
                 /* HOW TO Bind to DataGrid
+                 * 
+                    using System.Data;
+
+                    DataTable myResult = db.Get_Table(string query)
                     myDataGrid.Columns.Clear();
-                    myDataGrid.ItemsSource = dataTable.DefaultView;
+                    myDataGrid.ItemsSource = myResult.DefaultView;
                 */
 
                 /* How To get One columned datatable to List<int>
@@ -816,6 +821,54 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Phone bigint NOT NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,_Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
+                    //MessageBox.Show("Success");
+                }
+                catch
+                {
+                    //MessageBox.Show("Tables allready exists");
+                    return 0;
+                }
+            }
+            return 1;
+        }
+        public int Create_All_Functions()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    connection.Execute(
+                        $"create function nearstexams (@Username varchar(255))" +
+                        $"returns @rettable table (_Name nvarchar(255),_Date datetime)" +
+                        $"as" +
+                        $"begin" +
+                        $"declare @classid int" +
+                        $"select @classid = ClassID from student where Username=@Username" +
+                        $"declare @nearexam table (CourseID int,_Date datetime)" +
+                        $"insert @nearexam select CourseID,_Date from Exam where ClassID=@classid and (datediff(MINUTE,getdate(),_Date)>0)" +
+                        $"insert @rettable select Courses._Name,Exames._Date from Courses,@nearexam as Exames where Courses.CourseID=Exames.CourseID"+
+                        $"return"+
+                        $"end"+
+                        $"create function xyzCommonTeachers (@teacher_Username1 varchar(255),@teacher_Username2 varchar(255),@teacher_Username3 varchar(255))" +
+                        $"returns @rettable table (username varchar(255),_name nvarchar(255),lastname nvarchar(255),Classname nvarchar(255))" +
+                        $"as" +
+                        $"begin" +
+                        $"declare @id1 int;declare @id2 int;declare @id3 int" +
+                        $"select @id1=TeacherID from Teacher where UserName=@teacher_Username1;select @id2=TeacherID from Teacher where UserName=@teacher_Username2;select @id3=TeacherID from Teacher where UserName=@teacher_Username3" +
+                        $"declare @classes1 table (ClassId int);declare @classes2 table (ClassId int);declare @classes3 table (ClassId int)" +
+                        $"insert @classes1 select ClassId from CoCoT where TeacherID=@id1;insert @classes2 select ClassId from CoCoT where TeacherID=@id2;insert @classes3 select ClassId from CoCoT where TeacherID=@id3" +
+                        $"declare @commonClasses table (ClassId int);insert @commonClasses select * from @classes1 intersect select * from @classes2 intersect select * from @classes3;insert @rettable select Student.Username,Student._Name,Student.LastName,Class._Name from Student,Class,@commonClasses as commonClasses where commonClasses.ClassId=Student.ClassID and Student.ClassID=Class.ClassID" +
+                        $"return" +
+                        $"end"+
+                        $"create function BestTeachers ()" +
+                        $"returns @rettable table (teacherId int,_name nvarchar(255),LastName nvarchar(255),score float)" +
+                        $"as" +
+                        $"begin" +
+                        $"declare @myTB table (TeacherID int,_name nvarchar(255),LastName nvarchar(255),CourseID int,ClassID int,StuID int,Grade float,Ratio float,ExamID int)" +
+                        $"insert @myTB select Teacher.TeacherID,Teacher._Name,Teacher.Lastname,CoCoT.CourseID,CoCoT.ClassID,Grade.StuID,Grade.Grade,Exam.Ratio,Exam.ExamID from Teacher,Exam,CoCoT,Grade where CoCoT.TeacherID=Teacher.TeacherID and Exam.ClassID=CoCoT.ClassID and Exam.CourseID=CoCoT.CourseID and Exam.ExamID=Grade.ExamID" +
+                        $"insert @rettable select TeacherID,_Name,LastName,sum(Grade*ratio)/sum(ratio) from @myTB group by TeacherId,_Name,LastName" +
+                        $"return" +
+                        $"end");
                     //MessageBox.Show("Success");
                 }
                 catch

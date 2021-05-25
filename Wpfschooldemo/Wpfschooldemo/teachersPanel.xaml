@@ -19,6 +19,7 @@
             <Button x:Name="specialtyViewButton" Content="تدریس" Cursor="Hand" FontSize="20" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="specialtyViewButton_Click"/>
             <Button x:Name="seeAllViewButton" Content="مشاهده همه" Cursor="Hand" FontSize="20" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="seeAllViewButton_Click"/>
             <Button x:Name="deleteViewButton" Content="حذف" FontSize="20" Cursor="Hand" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="deleteViewButton_Click"/>
+            <Button x:Name="FunctionViewButton" Content="توابع خاص" FontSize="20" Cursor="Hand" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="FunctionViewButton_Click"/>
 
         </StackPanel>
 
