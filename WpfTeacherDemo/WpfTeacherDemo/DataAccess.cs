@@ -15,7 +15,7 @@ namespace WpfTeacherDemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from classes").ToList();
+                var output = connection.Query<Classes>($"select * from class").ToList();
                 return output;
             }
         }
@@ -41,7 +41,7 @@ namespace WpfTeacherDemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from Teachers where _username = '{username}' and _password = '{password}'").ToList();
+                var output = connection.Query<Teachers>($"select * from Teacher where username = '{username}' and _password = '{password}'").ToList();
                 int range = output.Count();
                 if (range > 0)
                     return true;
@@ -54,7 +54,7 @@ namespace WpfTeacherDemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Teachers>($"select * from teachers where _username = '{username}'").ToList();
+                var output = connection.Query<Teachers>($"select * from teacher where username = '{username}'").ToList();
                 try
                 {
                     Globals.myTeacher = (Teachers)output[0];
@@ -66,8 +66,16 @@ namespace WpfTeacherDemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<StudentsOfClass>($"SELECT * from Course{Courseid}_Of_class{Classid}").ToList();
+                var output = connection.Query<StudentsOfClass>($"SELECT * from Courses{Courseid}_Of_class{Classid}").ToList();
                 return output;
+            }
+        }
+        public int Get_Students_count_of_class_x(int classid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                var output = connection.Query<int>($"SELECT count(*) from Student where classId={classid}").ToList();
+                return output[0];
             }
         }
         public List<int> FindClassExams(int courseid , int classid)
@@ -78,14 +86,19 @@ namespace WpfTeacherDemo
                 return output;
             }
         }
-        public void UpdateTaple(StudentsOfClass myStudent)
+        public void UpdateTable(int stuid,float grade)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    connection.Execute($"UPDATE Course{Globals.myTeacherSelectedCourseId}_Of_class{Globals.myTeacherSelectedClassId} SET _g1={myStudent.g1},_g2={myStudent.g2},_g3={myStudent.g3},_g4={myStudent.g4},_g5={myStudent.g5},_g6={myStudent.g6},_g7={myStudent.g7},_g8={myStudent.g8},_g9={myStudent.g9},_g10={myStudent.g10} WHERE _stuid = '{myStudent.stuid}';");
+                    connection.Execute($"UPDATE Grade SET grade={grade} WHERE stuid = '{stuid}' and ExamId={Globals.myTeacherSelectedExam_Id};");
                     //MessageBox.Show("با موفقیت تغیر یافت", "successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("db error"); }
+                try
+                {
+                    connection.Execute($"insert into grade values({Globals.myTeacherSelectedExam_Id},{stuid},{grade});");
                 }
                 catch { MessageBox.Show("db error"); }
             }
@@ -106,6 +119,35 @@ namespace WpfTeacherDemo
                 }
                 catch { }
             }
+        }
+        public DataTable Get_Table(string query)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                DataTable dataTable = new DataTable();
+                // create data adapter
+                System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(query, Helper.CnnVal("dbschool"));
+                // this will query your database and return the result to your datatable
+                da.Fill(dataTable);
+                da.Dispose(); // i dont know what this is
+                return dataTable;
+
+                /* HOW TO Bind to DataGrid
+                 * 
+                    using System.Data;
+
+                    DataTable myResult = db.Get_Table(string query)
+                    myDataGrid.Columns.Clear();
+                    myDataGrid.ItemsSource = myResult.DefaultView;
+                */
+
+                /* How To get One columned datatable to List<int>
+                    List<int> students_ids = dataTable.AsEnumerable()
+                        .Select(r => r.Field<int>("_id"))
+                        .ToList();
+                 */
+            }
+
         }
     }
 }

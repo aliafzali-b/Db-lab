@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace WpfTeacherDemo
 {
@@ -21,6 +22,9 @@ namespace WpfTeacherDemo
     public partial class MainWindow : Window
     {
         DataAccess db = new DataAccess();
+
+        DataTable CocotForTeacherFrontEnd = new DataTable();
+        DataTable CocotForTeacherBackEnd = new DataTable();
         List<Teachers> TeachersList = new List<Teachers>();
         List<int> classNumber = new List<int>();
         List<int> courseNumber = new List<int>();
@@ -43,8 +47,19 @@ namespace WpfTeacherDemo
             if (db.isTeacherPasswordCorrect(username, password))
             {
                 db.initialize_myTeacher_By_Username(username);
-
-
+                int teacherId = Globals.myTeacher.teacherId;
+                CocotForTeacherFrontEnd = db.Get_Table("select Courses._Name as courseName,Class._Name as className from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+                CocotForTeacherBackEnd = db.Get_Table("select Courses.courseId as courseId,Class.classID as classId from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+                int selectedItem = 0;
+                int courseid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(0);
+                int classid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(1);
+                string courseName = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(0);
+                string className = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(1);
+                Globals.myTeacherSelectedClassId = classid;
+                Globals.myTeacherSelectedCourseId = courseid;
+                Globals.myTeacherSelectedClassName = className;
+                Globals.myTeacherSelectedCourseName = courseName;
+                /***
                 char[] tchar = Globals.myTeacher.takhasos.ToCharArray();
                 int courseid;
                 int counter;
@@ -69,7 +84,7 @@ namespace WpfTeacherDemo
                     }
 
                 }
-
+                ****/
 
 
 

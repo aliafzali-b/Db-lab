@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+
 
 namespace WpfTeacherDemo
 {
@@ -20,6 +22,8 @@ namespace WpfTeacherDemo
     public partial class changeClassDialog : Window
     {
         DataAccess db = new DataAccess();
+        DataTable CocotForTeacherFrontEnd = new DataTable();
+        DataTable CocotForTeacherBackEnd = new DataTable();
         List<Classes> ClassesList = new List<Classes>();
         List<Courses> CoursesList = new List<Courses>();
         char[] s = { '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '(' };
@@ -32,7 +36,7 @@ namespace WpfTeacherDemo
             ClassesList = db.GetClasses();
             CoursesList = db.GetCourses();
             db.initialize_myTeacher_By_Username(Globals.myTeacher.username);
-
+            /*
             char[] tchar = Globals.myTeacher.takhasos.ToCharArray();
             int courseid;
             int counter;
@@ -56,16 +60,36 @@ namespace WpfTeacherDemo
                 }
 
             }
+            */
+            int teacherId = Globals.myTeacher.teacherId;
+            CocotForTeacherFrontEnd = db.Get_Table("select Courses._Name as courseName,Class._Name as className from CoCoT,Class,Courses where TeacherID="+ teacherId+" and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+            CocotForTeacherBackEnd = db.Get_Table("select Courses.courseId as courseId,Class.classID as classId from CoCoT,Class,Courses where TeacherID="+ teacherId+" and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+           
+            foreach (DataRow sample in CocotForTeacherFrontEnd.Rows)
+            {
+                classComboBox.Items.Add(sample["courseName"] +" از "+ sample["className"]);
+            }
+
+
         }
         void changeClassDialog_Closed(object sender, EventArgs e)
         {
             int selectedItem = classComboBox.SelectedIndex;
+
             if (selectedItem != -1)
             {
                 //MessageBox.Show(classNumber[selectedItem].ToString() + courseNumber[selectedItem].ToString());
-                Globals.myTeacherSelectedClassId = classNumber[selectedItem];
-                Globals.myTeacherSelectedCourseId = courseNumber[selectedItem];
 
+                int courseid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(0);
+                int classid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(1);
+                string courseName = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(0);
+                string className = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(1);
+                Globals.myTeacherSelectedClassId = classid;
+                Globals.myTeacherSelectedCourseId = courseid;
+                Globals.myTeacherSelectedClassName = className;
+                Globals.myTeacherSelectedCourseName = courseName;
+                /**MessageBox.Show("class id " + classid);
+                MessageBox.Show("course id " + courseid);*/
             }
         }
 
