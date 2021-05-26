@@ -9,8 +9,10 @@
       Title="Datagrid_Page">
 
     <Grid>
-        <DataGrid x:Name="classDataGrid" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="516" Margin="10,10,0,0" VerticalAlignment="Top" Width="782" FontFamily="B nazanin" FontSize="20" />
+        
+        <DataGrid x:Name="classDataGrid" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="469" Margin="10,57,0,0" VerticalAlignment="Top" Width="782" FontFamily="B nazanin" FontSize="20" />
         <Button Content="ثبت تغیرات" FontFamily="b nazanin" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="10,531,0,0" VerticalAlignment="Top" Width="115" Click="sabtButton"/>
+        <ComboBox x:Name="examComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="202" Height="29" SelectionChanged="examComboBox_SelectionChanged"/>
 
     </Grid>
 </Page>
