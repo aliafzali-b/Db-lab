@@ -35,7 +35,7 @@ namespace WpfTeacherDemo
             normalColor = Color.FromArgb(0xFF, 0x42, 0x42, 0x42);
             selectedColor = Color.FromArgb(0xFF, 0x7E, 0x7E, 0x7E);
 
-            changeClassButton.Content = CoursesList[Globals.myTeacherSelectedCourseId-1].name + " کلاس " + ClassesList[Globals.myTeacherSelectedClassId-1].name;
+            changeClassButton.Content = Globals.myTeacherSelectedCourseName + " کلاس " + Globals.myTeacherSelectedClassName;
             
             changeBackgroundColor(seeAllViewButton);
             studentsPanelPage.Content = new Datagrid_Page();
