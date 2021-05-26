@@ -10,17 +10,17 @@
 
     <Grid>
         <Button x:Name="addButton" Content="افزودن" HorizontalAlignment="Left" Height="34" Margin="697,518,0,0" VerticalAlignment="Top" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="addButton_Click" />
-        <TextBox x:Name="nameTextbox" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="30" Margin="457,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" />
-        <TextBox x:Name="dateTextbox" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Height="30" Margin="457,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="timeTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="457,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="infoTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="457,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="zaribTextbox" HorizontalAlignment="Left" Height="30" Margin="457,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <Label Content=": نام امتحان " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="699,84,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": تاریخ " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="699,125,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": ساعت برگزاری " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="655,165,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": توضیح " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="655,205,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label Content=": ضریب " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="655,245,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
-        <Label x:Name="pageTitleLable" Content=": افزودن دانش آموز " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="102,10,0,0" VerticalAlignment="Top" Width="688" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
+        <TextBox x:Name="timeHHTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="461,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="timeMMTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="527,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="infoTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="461,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="zaribTextbox" HorizontalAlignment="Left" Height="30" Margin="461,346,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
+        <Label Content=": تاریخ " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="703,91,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": ساعت برگزاری " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="659,266,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="503,261,0,0" VerticalAlignment="Top" Width="20" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": توضیح " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="659,306,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": ضریب " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="659,346,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontFamily="B nazanin"/>
+        <Label x:Name="pageTitleLable" Content=": افزودن امتحان " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="102,10,0,0" VerticalAlignment="Top" Width="688" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
+        <Calendar x:Name="calender1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="445,92,0,0" Width="214" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
 
     </Grid>
 </Page>

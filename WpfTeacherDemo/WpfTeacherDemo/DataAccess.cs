@@ -103,21 +103,20 @@ namespace WpfTeacherDemo
                 catch { MessageBox.Show("db error"); }
             }
         }
-        public void insertIntoExames(string name, string date,string time ,string info,float zarib)
+        public void insertIntoExames(string examdate, float zarib,string info,int status)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    var outputAll = connection.Query($"SELECT * FROM Exams").ToList();
-                    var outputClass = connection.Query($"SELECT * FROM Exams Where _classid='{Globals.myTeacherSelectedClassId}' and _courseid='{Globals.myTeacherSelectedCourseId}'").ToList();
+                    var outputAll = connection.Query($"SELECT * FROM Exam").ToList();
                     int examId = outputAll.Count();
-                    int examNumber = outputClass.Count();
-                    //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    connection.Execute($"insert into Exams values({examId + 1}, {Globals.myTeacherSelectedClassId},{Globals.myTeacherSelectedCourseId},{examNumber + 1},N'{name}',N'{date}',N'{time}',0,N'{info}',{zarib})");
+                    //MessageBox.Show($"insert into Exam values({examId}, {Globals.myTeacherSelectedCourseId},{Globals.myTeacherSelectedClassId},'{examdate}',{zarib},N'{info}',{status}");
+                    
+                    connection.Execute($"insert into Exam values({examId}, {Globals.myTeacherSelectedCourseId},{Globals.myTeacherSelectedClassId},'{examdate}',{zarib},N'{info}',{status})");
 
                 }
-                catch { }
+                catch { MessageBox.Show("db error"); }
             }
         }
         public DataTable Get_Table(string query)
