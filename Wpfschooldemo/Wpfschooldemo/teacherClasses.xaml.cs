@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace Wpfschooldemo
 {
@@ -23,6 +24,7 @@ namespace Wpfschooldemo
         List<CoCoT> CoCoTList = new List<CoCoT>();
         List<Courses> coursesList = new List<Courses>();
         List<Classes> classesList = new List<Classes>();
+        int teacherid;
         public teacherClasses()
         {
             InitializeComponent();
@@ -38,6 +40,10 @@ namespace Wpfschooldemo
             {
                 coursesComboBox.Items.Add(sample._name);
             }
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            changeName();
         }
         void teacherClasses_Closed(object sender, EventArgs e)
         {
@@ -65,13 +71,14 @@ namespace Wpfschooldemo
                 classesComboBox.SelectedItem = -1;
                 coursesComboBox.SelectedItem = -1;
             }
+            changeName();
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             int courseid = coursesComboBox.SelectedIndex;
             int classid = classesComboBox.SelectedIndex;
-            int teacherid = db.GetTeacherIdByUsername(usernameTextbox.Text);
+            teacherid = db.GetTeacherIdByUsername(usernameTextbox.Text);
             if (courseid >=0 && classid>=0)
             {
                 db.insertIntoCoCoT(courseid, classid, teacherid);
@@ -82,10 +89,15 @@ namespace Wpfschooldemo
         }
         void UpdateDataGrid()
         {
-            int teacherId = db.GetTeacherIdByUsername(usernameTextbox.Text);
-            CoCoTList = db.GetTeacherCoCotById(teacherId);
-            CoCoTdataGrid.ItemsSource = CoCoTList;
+            teacherid = db.GetTeacherIdByUsername(usernameTextbox.Text);
+
+            /*CoCoTList = db.GetTeacherCoCotById(teacherid);
+            CoCoTdataGrid.ItemsSource = CoCoTList;*/
+            DataTable myResult = db.Get_Table("SELECT Courses._Name as course_Name,Class._Name as class_Name FROM CoCoT,Courses,Class where CoCoT.ClassID=Class.ClassID and CoCoT.CourseID=Courses.CourseID and CoCoT.TeacherID = "+teacherid+"");
+            CoCoTdataGrid.Columns.Clear();
+            CoCoTdataGrid.ItemsSource = myResult.DefaultView;
             CoCoTdataGrid.IsReadOnly = true;
+            changeName();
         }
         void ViewAddingPanel(int status) 
         {
@@ -112,18 +124,32 @@ namespace Wpfschooldemo
         }
         private void deleteRightClick(object sender, RoutedEventArgs e)
         {
-            CoCoT myCoCoT = (CoCoT)CoCoTdataGrid.SelectedItem;
+            //CoCoT myCoCoT = (CoCoT)CoCoTdataGrid.SelectedItem;
             int selectedId = CoCoTdataGrid.SelectedIndex;
+            
+            //BackendCoCot myCoCoT = (BackendCoCot)CoCoTdataGrid.SelectedItem;
+            
+            
             if (selectedId >= 0)
             {
+                DataRowView row = CoCoTdataGrid.SelectedItem as DataRowView;
+                int couresId = db.GetCourseIdByName(row.Row.ItemArray[0].ToString());
+                int classId = db.GetClassIdByName(row.Row.ItemArray[1].ToString());
                 if (MessageBox.Show("آیا میخواهید معلم دیگر این درس را تدریس نکند؟", "Are you sure", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    ///db.deleteStudentOFClassesList(db.GetStudentIdByUsername(username));
-                    int teacherId = db.GetTeacherIdByUsername(usernameTextbox.Text);
-                    db.deleteCoCoT(myCoCoT.courseid,myCoCoT.classid,teacherId);
+                    db.deleteCoCoT(couresId, classId, teacherid);
                     UpdateDataGrid();
                 }
             }
+        }
+        private void changeName()
+        {
+            try
+            {
+                CoCoTdataGrid.Columns[0].Header = " نام درس ";
+                CoCoTdataGrid.Columns[1].Header = " نام کلاس ";
+            }
+            catch { }
         }
     }
 }

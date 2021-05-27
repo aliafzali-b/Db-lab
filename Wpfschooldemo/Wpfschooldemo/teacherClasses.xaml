@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpfschooldemo"
+        Loaded="Page_Loaded"
         mc:Ignorable="d"
         d:DesignHeight="562" d:DesignWidth="843"
         Title="teacherClasses">
@@ -17,7 +18,7 @@
         <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="490,97,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>
         <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" Margin="490,97,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Visibility="Hidden"/>
         <Label x:Name="lable1" Content=": تدریس معلم " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="519,5,0,0" VerticalAlignment="Top" Width="314" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
-        <DataGrid x:Name="CoCoTdataGrid" HorizontalAlignment="Left" Height="352" Margin="361,137,0,0" VerticalAlignment="Top" Width="354">
+        <DataGrid x:Name="CoCoTdataGrid" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="352" Margin="361,137,0,0" VerticalAlignment="Top" Width="354" FontFamily="B nazanin" FontSize="20">
             <DataGrid.ContextMenu>
                 <ContextMenu HorizontalContentAlignment="Right">
                     <MenuItem Header="حذف" Click="deleteRightClick" />
