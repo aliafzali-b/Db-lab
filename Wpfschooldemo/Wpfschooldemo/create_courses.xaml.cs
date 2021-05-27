@@ -24,7 +24,7 @@ namespace Wpfschooldemo
         List<Courses> coursesList = new List<Courses>();
         List<Teachers> teachersList = new List<Teachers>();
         bool have_We_any_Change;
-        List<CheckBox> checkbx = null;
+        //List<CheckBox> checkbx = null;
         DataAccess db = new DataAccess();
         char[] s = { '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '(' };
         public create_courses()
@@ -33,11 +33,11 @@ namespace Wpfschooldemo
             db.createCoursesTable();
             this.Closed += new EventHandler(create_courses_Closed);
            
-            textBox1.Text = "for excute onchange text function";
+            textBoxName.Text = "for excute onchange text function";
             classesList = db.GetClasses();
             coursesList = db.GetCourses();
-            checkbx = new List<CheckBox>() { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18, checkBox19, checkBox20, checkBox21};
-            foreach (CheckBox sample in checkbx)
+           // checkbx = new List<CheckBox>() { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18, checkBox19, checkBox20, checkBox21};
+           /* foreach (CheckBox sample in checkbx)
             {
                 sample.Visibility = Visibility.Hidden;
             }
@@ -45,7 +45,7 @@ namespace Wpfschooldemo
             {
                 checkbx[sample.classid].Content = sample._name; // because id start's with 1 but checkbx's andise start's from 0
                 show_checkBoxes(true);
-            }
+            }*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace Wpfschooldemo
                 dataGrid1.Columns.RemoveAt(2);
             }
             catch { }
-            textBox1.Text = "";//chon ba ezafe shodan item haye listbox in textbox meghdar migereft
+            textBoxName.Text = "";//chon ba ezafe shodan item haye listbox in textbox meghdar migereft
             uncheckAll();
         }
 
@@ -90,15 +90,15 @@ namespace Wpfschooldemo
         {
             dataGrid1.Columns[0].Header = " Id ";
             dataGrid1.Columns[1].Header = " نام ";
-            foreach (CheckBox sample in checkbx)
+           /* foreach (CheckBox sample in checkbx)
             {
                 if (sample.Visibility == Visibility.Visible)
                     sample.IsChecked = false;
                 //else
                     //break;
-            }
+            }*/
         }
-        private void show_checkBoxes(bool visibility)
+        /*private void show_checkBoxes(bool visibility)
         {
             if (visibility == true)
             {
@@ -118,8 +118,8 @@ namespace Wpfschooldemo
                     checkbx[sample.classid].Visibility = Visibility.Hidden; // because id start's with 1 but checkbx's andise start's from 0
                 }
             }
-        }
-        private void checkAll()
+        }*/
+       /* private void checkAll()
         {
             foreach (CheckBox sample in checkbx)
             {
@@ -128,9 +128,9 @@ namespace Wpfschooldemo
                 //else
                 //break;
             }
-        }
+        }*/
 
-        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        private void textBoxName_TextChanged(object sender, TextChangedEventArgs e)
         {
             /*coursesList = db.GetCourses();
             bool isvalid = db.isCourseNameValid(textBox1.Text);
@@ -197,26 +197,36 @@ namespace Wpfschooldemo
         {
             string cla = "";
             string no = "";
-            foreach (CheckBox sample in checkbx)
-            {
-                no += "0";
-                if (sample.IsChecked == true)
-                    cla += "1";
-                else
-                    cla += "0";
-            }
+            string name = textBoxName.Text;
+
+            int unit = -1;
+            try { unit = Int32.Parse(textBoxUnit.Text); } catch { }
+
+            int code = -1;
+            try { code = Int32.Parse(textBoxCode.Text); } catch { }
+            DataAccess db = new DataAccess();
+            db.insertIntoCourses(name,unit,code);
+            updateDataGrid();
+            /* foreach (CheckBox sample in checkbx)
+             {
+                 no += "0";
+                 if (sample.IsChecked == true)
+                     cla += "1";
+                 else
+                     cla += "0";
+             }*/
             //MessageBox.Show(cla);
-            if (cla != no)
-            {
-                DataAccess db = new DataAccess();
-                db.insertIntoCourses(textBox1.Text, cla);
-                uncheckAll();
-                updateDataGrid();
-            }
-            else
-            {
-                MessageBox.Show("لطفا حداقل یک کلاس را انتخاب کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            /* if (cla != no)
+             {
+                 DataAccess db = new DataAccess();
+                 db.insertIntoCourses(textBox1.Text, cla);
+                 uncheckAll();
+                 updateDataGrid();
+             }
+             else
+             {
+                 MessageBox.Show("لطفا حداقل یک کلاس را انتخاب کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+             }*/
 
             have_We_any_Change = true;
         }
@@ -229,34 +239,34 @@ namespace Wpfschooldemo
             {
                 int selectedId = (mycourse.courseid)-1;
                 if (selectedId >= 0)
-                    textBox1.Text = coursesList[selectedId]._name;
+                    textBoxName.Text = coursesList[selectedId]._name;
             } 
         }
-        private void checkAllButton_Click(object sender, RoutedEventArgs e)
+       /* private void checkAllButton_Click(object sender, RoutedEventArgs e)
         {
             checkAll();
         }
         private void uncheckAllButton_Click(object sender, RoutedEventArgs e)
         {
             uncheckAll();
-        }
+        }*/
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
-            string oldname = textBox1.Text;
+            string oldname = textBoxName.Text;
             string newname = textBox2.Text;
             string cla = "";
             string no = "";
             if (db.isCourseNameValid(newname) || oldname==newname) 
             { 
                 //change checkboxs
-                foreach (CheckBox sample in checkbx)
+                /*foreach (CheckBox sample in checkbx)
                 {
                     no += "0";
                     if (sample.IsChecked == true)
                         cla += "1";
                     else
                         cla += "0";
-                }
+                }*/
                 //MessageBox.Show(cla);
                 if (cla != no)
                 {
