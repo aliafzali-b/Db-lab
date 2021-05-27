@@ -149,12 +149,12 @@ namespace Wpfschooldemo
                 var output = connection.Query($"SELECT * FROM class").ToList();
                 int range = output.Count();
                 // MessageBox.Show("its id will be " + (range + 1).ToString());
-                connection.Execute($"insert into class values({range + 1}, N'{name}',{MajorID},{BranchNum},N'{Year}',{ChairNum})");
+                connection.Execute($"insert into class values({range}, N'{name}',{MajorID},{BranchNum},N'{Year}',{ChairNum})");
 
 
             }
         }
-        public void insertIntoCourses(string name, string classes)
+        public void insertIntoCourses(string name,int unit,int code)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
@@ -162,7 +162,7 @@ namespace Wpfschooldemo
                 var output = connection.Query($"SELECT * FROM courses").ToList();
                 int range = output.Count();
                 //MessageBox.Show("its id will be " + (range + 1).ToString());
-                connection.Execute($"insert into courses values({range + 1}, N'{name}','{classes}')");
+                connection.Execute($"insert into courses values({range}, N'{name}',{unit},{code})");
 
 
 
@@ -232,7 +232,7 @@ namespace Wpfschooldemo
                 {
                     var output = connection.Query($"SELECT * FROM Major").ToList();
                     int range = output.Count();
-                    MessageBox.Show("its id will be " + (range + 1).ToString());
+                    MessageBox.Show("its id will be " + (range).ToString());
                     connection.Execute($"insert into Major values({range},N'{name}',{code})");
                     //connection.Execute($"insert into Major values(4,N'{تست4',5)")
 
