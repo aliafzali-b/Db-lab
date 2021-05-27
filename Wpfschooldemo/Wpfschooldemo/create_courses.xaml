@@ -12,39 +12,23 @@
     <Grid Margin="0,0,0.333,-3.333" Background="#FFEBEBEB" >
         <Canvas Margin="210,90,15,90">
             <Border BorderThickness="1"  BorderBrush="Black"  CornerRadius="10"  Background="LightGray"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="470"  Height="350" />
-            <CheckBox x:Name="checkBox1" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="127"/>
-            <CheckBox x:Name="checkBox2" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="148"/>
-            <CheckBox x:Name="checkBox3" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="169"/>
-            <CheckBox x:Name="checkBox4" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="190"/>
-            <CheckBox x:Name="checkBox5" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="211"/>
-            <CheckBox x:Name="checkBox6" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="233"/>
-            <CheckBox x:Name="checkBox7" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="23" Canvas.Top="254"/>
-            <CheckBox x:Name="checkBox8" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="127"/>
-            <CheckBox x:Name="checkBox9" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="148"/>
-            <CheckBox x:Name="checkBox10" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="169"/>
-            <CheckBox x:Name="checkBox11" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="192"/>
-            <CheckBox x:Name="checkBox12" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="213"/>
-            <CheckBox x:Name="checkBox13" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="234"/>
-            <CheckBox x:Name="checkBox14" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="186" Canvas.Top="255"/>
-            <CheckBox x:Name="checkBox15" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="127"/>
-            <CheckBox x:Name="checkBox16" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="148"/>
-            <CheckBox x:Name="checkBox17" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="169"/>
-            <CheckBox x:Name="checkBox18" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="192"/>
-            <CheckBox x:Name="checkBox19" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="213"/>
-            <CheckBox x:Name="checkBox20" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="234"/>
-            <CheckBox x:Name="checkBox21" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="345" Canvas.Top="254"/>
-            <TextBox x:Name="textBox1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" TextChanged="textBox1_TextChanged" FontSize="16" Canvas.Left="57" Canvas.Top="64"/>
+
+            <TextBox x:Name="textBoxName" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" TextChanged="textBoxName_TextChanged" FontSize="16" Canvas.Left="238" Canvas.Top="64"/>
+            <TextBox x:Name="textBoxUnit" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"  FontSize="16" Canvas.Left="345" Canvas.Top="109"/>
+            <TextBox x:Name="textBoxCode" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"  FontSize="16" Canvas.Left="114" Canvas.Top="109"/>
+
             <TextBox x:Name="textBox2" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" Canvas.Top="305" Canvas.Left="6"/>
             <Button x:Name="changeButton" Cursor="Hand" Content="ذخیره تغییرات" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="165" FontSize="18" Click="changeButton_Click" Canvas.Left="298" Canvas.Top="305"/>
             <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" Click="addButton_Click" FontSize="22" Canvas.Left="295" Canvas.Top="305"/>
             <Label Content="افزودن درس جدید" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="345" Canvas.Top="10"/>
             <Label Content=": نام درس" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="60"/>
+            <Label Content=": واحد" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="102" RenderTransformOrigin="0.209,0.405"/>
+            <Label Content=": کد" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="238" Canvas.Top="102"/>
+
             <Label x:Name="lable3" Content=": نام جدید" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="63" FontSize="16" Canvas.Left="227" Canvas.Top="304"/>
             <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Canvas.Left="21" Canvas.Top="64"/>
             <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Canvas.Left="21" Canvas.Top="64"/>
             <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="38" Source="warning.png" Canvas.Left="17" Canvas.Top="59"/>
-            <Image x:Name="uncheckAllImage" Cursor="Hand" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="uncheckAll.jpg" MouseLeftButtonDown="uncheckAllButton_Click" Canvas.Left="34" Canvas.Top="100"/>
-            <Image x:Name="checkAllImage" Cursor="Hand" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="checkAll.jpg" MouseLeftButtonDown="checkAllButton_Click" Canvas.Top="100" Canvas.Left="9"/>
         </Canvas>
         <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="343" Margin="18,93,0,0" VerticalAlignment="Top" Width="187" GridLinesVisibility="Vertical" SelectionChanged="dataGrid1_SelectionChanged" FontSize="18"/>
         <Label Content="مدیریت دروس" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="489,10,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
