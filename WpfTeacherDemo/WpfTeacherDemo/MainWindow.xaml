@@ -39,7 +39,7 @@
                 Width="220" Height="35" Margin="117,220,113,195"  >
             <DockPanel Grid.Row="1" Grid.Column="1">
                 <Image DockPanel.Dock="Left" Source="whiteUserIcon.png" Width="18" Height="18" Margin="5,0,0,0" ></Image>
-                <TextBox Text="user0" x:Name="usernameTextbox" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent"
+                <TextBox Text="teacher0" x:Name="usernameTextbox" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent"
                           Foreground="#f1f1f1" Margin="0,1,10,0"></TextBox>
             </DockPanel>
         </Border>

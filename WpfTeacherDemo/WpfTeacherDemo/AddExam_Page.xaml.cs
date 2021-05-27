@@ -44,7 +44,7 @@ namespace WpfTeacherDemo
             string _info = infoTextbox.Text;
             int status = 0;
 
-            if (calender1.SelectedDate.HasValue)
+            if (calender1.SelectedDate.HasValue && !String.IsNullOrEmpty(_timeHH) && !String.IsNullOrEmpty(_timeMM))
             {
                 // ... Display SelectedDate in Title.
                 DateTime date = calender1.SelectedDate.Value;
@@ -57,17 +57,22 @@ namespace WpfTeacherDemo
                 //this.Title = date.ToString("yyyy-MM-dd h:mm");
                 yymmdd = date.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 //MessageBox.Show(yymmdd);
-            }
-            if (yymmdd != "" && _info != "" && _zarib > 0 )
-            {
-                db.insertIntoExames(yymmdd, _zarib,_info,status);
-                clearAllTextBoxes();
-                MessageBox.Show("انجام شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (yymmdd != "" && _info != "" && _zarib > 0)
+                {
+                    db.insertIntoExames(yymmdd, _zarib, _info, status);
+                    clearAllTextBoxes();
+                    MessageBox.Show("انجام شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("لطفا ورودی را کنترل کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
                 MessageBox.Show("لطفا ورودی را کنترل کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
 
         }
         private void clearAllTextBoxes()

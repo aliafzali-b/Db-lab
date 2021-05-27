@@ -49,8 +49,13 @@ namespace WpfTeacherDemo
                 classDataGrid.ItemsSource = grades.DefaultView;
                 examComboBox.SelectedIndex = 0;
                 Globals.myTeacherSelectedExam_Id = exam_ids[0];
+                changeName();
             }
             catch { }
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            changeName();
         }
         private void sabtButton(object sender, RoutedEventArgs e)
         {
@@ -118,8 +123,21 @@ namespace WpfTeacherDemo
                 grades = db.Get_Table("select z.StuID, z._Name, z.LastName, z.FatherName, sum(z.grade) as grade from(select Student.StuID, Student._Name, Student.LastName, Student.FatherName, null as grade from Student where Student.ClassID = "+Globals.myTeacherSelectedClassId+" union select Student.StuID, Student._Name, Student.LastName, Student.FatherName, Grade.Grade from Student, Grade where Student.StuID = Grade.StuID and Grade.ExamID = "+ exam_ids[selectedItem] + ") as Z group by Z.StuID, z._Name, z.LastName, z.FatherName");
                     classDataGrid.Columns.Clear();
                     classDataGrid.ItemsSource = grades.DefaultView;
+                changeName();
                 //}
             }
+        }
+        private void changeName()
+        {
+            try
+            {
+                classDataGrid.Columns[0].Header = " Id ";
+                classDataGrid.Columns[1].Header = " نام دانش آموز ";
+                classDataGrid.Columns[2].Header = " نام خانوادگی ";
+                classDataGrid.Columns[3].Header = " نام پدر ";
+                classDataGrid.Columns[4].Header = " نمره ";
+            }
+            catch { }
         }
     }
 }

@@ -122,6 +122,7 @@ namespace Wpfschooldemo
         }
         private void returnImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            Globals.cache = "";
             this.Closed -= teachersPanel_Closed;
             this.Close();
             var Boss_Panel = new Boss_Panel();

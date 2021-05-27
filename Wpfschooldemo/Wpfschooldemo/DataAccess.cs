@@ -176,7 +176,20 @@ namespace Wpfschooldemo
                 {
                     connection.Execute($"insert into cocot values({courseid}, {classid},{teacherid})");
                 }
-                catch { MessageBox.Show("db error"); }
+                catch {
+                    MessageBox.Show("این درس را کس دیگری تدریس میکند", "Error", MessageBoxButton.OK,MessageBoxImage.Error);
+                    if (MessageBox.Show("آیا مایلید این معلم آن درس را تدریس کند", "Change Teacher", MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            connection.Execute($"Update cocot set TeacherId={teacherid} where courseId={courseid} and classId={classid}");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("عملیات با شکست رو به رو شد", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
             }
         }
         public void insertIntoTeachersTable(string username, string password, string name,string lastname,string expert,long phone,string email,char gender,int rememberme)
@@ -299,7 +312,7 @@ namespace Wpfschooldemo
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
-                var output = connection.Query<Classes>($"select * from classes where _name = N'{name}'").ToList();
+                var output = connection.Query<Classes>($"select * from class where _name = N'{name}'").ToList();
                 try
                 {
                     Classes sample = (Classes)output[0];
@@ -791,7 +804,7 @@ namespace Wpfschooldemo
                  * 
                     using System.Data;
 
-                    DataTable myResult = db.Get_Table(string query)
+                    DataTable myResult = db.Get_Table(string query);
                     myDataGrid.Columns.Clear();
                     myDataGrid.ItemsSource = myResult.DefaultView;
                 */
@@ -820,7 +833,7 @@ namespace Wpfschooldemo
                         $"CREATE TABLE Grade(ExamID int NOT NULL,StuID int NOT NULL,Grade smallmoney NULL,FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) on Delete cascade,FOREIGN KEY(StuID) REFERENCES Student(StuID) on update cascade);" +
                         $"CREATE TABLE Teacher(TeacherID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,Expert nvarchar(255) NULL,Phone bigint NOT NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(TeacherID),CONSTRAINT CheckTeacher check(Gender = 'M' OR Gender = 'F'));" +
                         $"CREATE TABLE Manager(ManagerID int NOT NULL,UserName varchar(255) NOT NULL UNIQUE,_Password varchar(255) NOT NULL,_Name nvarchar(255) NOT NULL,Lastname nvarchar(255) NOT NULL,_Address nvarchar(255) NULL,Email varchar(255) NOT NULL,Gender char(1) NULL,RememberMe int NOT NULL,PRIMARY KEY(ManagerID),CONSTRAINT CheckManeger check(Gender = 'M' OR Gender = 'F'));" +
-                        $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade);");
+                        $"CREATE TABLE CoCoT(CourseID int NOT NULL,ClassID int NOT NULL,TeacherID int NOT NULL,FOREIGN KEY(CourseID) REFERENCES Courses(CourseID) on update cascade,FOREIGN KEY(ClassID) REFERENCES Class(ClassID) on update cascade,FOREIGN KEY(TeacherID) REFERENCES Teacher(TeacherID) on update cascade,CONSTRAINT PK_Cocot PRIMARY KEY (CourseID,ClassID));");
                     //MessageBox.Show("Success");
                 }
                 catch
