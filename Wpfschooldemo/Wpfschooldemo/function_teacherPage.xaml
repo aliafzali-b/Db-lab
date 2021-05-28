@@ -10,7 +10,7 @@
       Title="function_teacherPage">
 
     <Grid>
-        <DataGrid x:Name="resultDataGrid" HorizontalAlignment="Left" Height="346" Margin="10,199,0,0" VerticalAlignment="Top" Width="820" FontFamily="B nazanin" FontSize="20" >
+        <DataGrid x:Name="resultDataGrid" HorizontalAlignment="Left" Height="346" Margin="10,199,0,0" VerticalAlignment="Top" Width="820" FontFamily="B nazanin" FontSize="20" Background="Transparent" RowBackground="Transparent">
         </DataGrid>
         <Button x:Name="f1Button" Content="نزدیک ترین فعالیت های دانش آموز" HorizontalAlignment="Left" Margin="581,160,0,368" Width="250" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="f1Button_Click"/>
         <Button x:Name="f2Button" Content="دانش آموزانی که هر 3 این معلم ها را دارند" HorizontalAlignment="Left" Margin="259,160,0,368" Width="298" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="f2Button_Click"/>

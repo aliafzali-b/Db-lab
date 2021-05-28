@@ -19,11 +19,10 @@
                 <GradientStop Color="#FF2E80E4" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="212" Margin="122,11,0,0" VerticalAlignment="Top" Width="213" Source="avatar.png"/>
-        <Label Content="Username" HorizontalAlignment="Left" Height="23" Margin="116,202,0,0" VerticalAlignment="Top" Width="64" FontSize="9" FontFamily="Segoe UI" Foreground="White"/>
-        <Label Content="Password" HorizontalAlignment="Left" Height="23" Margin="117,262,0,0" VerticalAlignment="Top" Width="53" FontSize="10" FontFamily="Segoe UI" Foreground="White"/>
-
-        <Button x:Name="loginButton" Content="login" HorizontalAlignment="Left" Height="31" Margin="116,354,0,0" VerticalAlignment="Top" Width="220"  FontSize="14" FontWeight="Bold" FontFamily="Segoe UI" Click="loginButton_Click"
+        <Image HorizontalAlignment="Left" Height="212" Margin="122,0,0,0" VerticalAlignment="Top" Width="213" Source="avatar.png"/>
+        <Label Content=": نام کاربری" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="247,193,0,0" VerticalAlignment="Top" Width="88" FontSize="14" FontFamily="B nazanin" Foreground="White"/>
+        <Label Content=": کلمه عبور" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="272,255,0,0" VerticalAlignment="Top" Width="63" FontSize="14" FontFamily="B nazanin" Foreground="White"/>
+        <Button x:Name="loginButton" Content="ورود" HorizontalAlignment="Left" Height="31" Margin="116,354,0,0" VerticalAlignment="Top" Width="220"  FontSize="18" FontWeight="Bold" FontFamily="B nazanin"  Click="loginButton_Click"
             Background="#f1f1f1"
             BorderBrush="#4a88df"
             Foreground="#FF62A4EE"

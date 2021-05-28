@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("whiteexiticon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("29967c0267d58120fbcb043020b09858.jpg")]
 
 

@@ -164,6 +164,7 @@ namespace Wpfschooldemo
             newemailTextbox.IsEnabled = false;
             //newmajorTextbox.IsEnabled = false;
             genderComboBox.SelectedIndex = -1;
+            genderComboBox.IsEnabled = false;
         }
         private void enableAllTextBoxes()
         {
@@ -174,6 +175,7 @@ namespace Wpfschooldemo
             newspecialtyTextbox.IsEnabled = true;
             newphonenumberTextbox.IsEnabled = true;
             newemailTextbox.IsEnabled = true;
+            genderComboBox.IsEnabled = true;
             //newmajorTextbox.IsEnabled = true;
         }
 

@@ -138,16 +138,24 @@ namespace Wpfschooldemo
         {
             Canvas canvas = sender as Canvas;
             DependencyObject child = VisualTreeHelper.GetChild(canvas, 0);
+            DependencyObject childLabel = VisualTreeHelper.GetChild(canvas, 2);
             Border border = child as Border;
+            Label label = childLabel as Label;
+
             border.BorderThickness = new Thickness(2.5);
+            label.FontWeight = FontWeights.UltraBold;
             hoverPlaySound();
         }
         private void Image_MouseLeave(object sender, RoutedEventArgs e)
         {
             Canvas canvas = sender as Canvas;
             DependencyObject child = VisualTreeHelper.GetChild(canvas, 0);
+            DependencyObject childLabel = VisualTreeHelper.GetChild(canvas, 2);
             Border border = child as Border;
+            Label label = childLabel as Label;
+            label.FontWeight = FontWeights.Normal;
             border.BorderThickness = new Thickness(1);
+
         }
 
         private void hoverPlaySound()

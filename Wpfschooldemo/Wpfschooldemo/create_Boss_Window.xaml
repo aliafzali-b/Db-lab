@@ -8,6 +8,9 @@
         WindowStartupLocation="CenterScreen"
         Title="create_Boss_Window" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="wp2590323.png"/>
+        </Grid.Background>
         <Button x:Name="addButton" Cursor="Hand" Content="تایید" HorizontalAlignment="Left" Height="34" Margin="690,377,0,0" VerticalAlignment="Top" Width="93" FontSize="18" FontFamily="b nazanin" FontWeight="Bold" Click="addButton_Click"/>
         <TextBox x:Name="usernameTextbox" HorizontalAlignment="Left" Height="30" Margin="445,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <TextBox x:Name="passwordTextbox" HorizontalAlignment="Left" Height="30" Margin="445,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>

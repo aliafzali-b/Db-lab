@@ -9,6 +9,7 @@
         FontFamily="B nazanin"
         Title="create_class" Height="450" Width="720" MaxHeight="450" MinHeight="450" MaxWidth="720" MinWidth="720"
         Loaded="create_class_Loaded">
+    
     <Grid Background="#FFEBEBEB">
         <Label Content="مدیریت کلاس ها" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="42" Margin="252,10,0,0" VerticalAlignment="Top" Width="451" FontSize="24"/>
         <Label Content="لیست همه کلاس ها" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="32" Margin="551,65,0,0" VerticalAlignment="Top" Width="148" FontSize="16"/>

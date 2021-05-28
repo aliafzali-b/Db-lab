@@ -317,6 +317,8 @@
     <Resource Include="Help.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="wp2590323.png" />
+    <Resource Include="462782.jpg" />
     <Content Include="hover.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

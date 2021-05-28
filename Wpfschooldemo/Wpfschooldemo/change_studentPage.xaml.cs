@@ -163,8 +163,14 @@ namespace Wpfschooldemo
             newnameTextbox.IsEnabled = false;
             newfathernameTextbox.IsEnabled = false;
             newphonenumberTextbox.IsEnabled = false;
+            newlastnameTextbox.IsEnabled = false;
+            newaddressTextbox.IsEnabled = false;
+            newinfoTextbox.IsEnabled = false;
             //newmajorTextbox.IsEnabled = false;
             classesComboBox.SelectedIndex = -1;
+
+            classesComboBox.IsEnabled = false;
+            genderComboBox.IsEnabled = false;
         }
         private void enableAllTextBoxes()
         {
@@ -173,7 +179,12 @@ namespace Wpfschooldemo
             newnameTextbox.IsEnabled = true;
             newfathernameTextbox.IsEnabled = true;
             newphonenumberTextbox.IsEnabled = true;
+            newlastnameTextbox.IsEnabled = true;
+            newaddressTextbox.IsEnabled = true;
+            newinfoTextbox.IsEnabled = true;
             //newmajorTextbox.IsEnabled = true;
+            classesComboBox.IsEnabled = true;
+            genderComboBox.IsEnabled = true;
         }
     }
 }

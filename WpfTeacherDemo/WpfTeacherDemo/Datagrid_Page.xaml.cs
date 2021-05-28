@@ -120,7 +120,7 @@ namespace WpfTeacherDemo
                 {*/
                 /*MessageBox.Show("classid "+Globals.myTeacherSelectedClassId.ToString());
                 MessageBox.Show("examid "+Globals.myTeacherSelectedExam_Id.ToString());*/
-                grades = db.Get_Table("select z.StuID, z._Name, z.LastName, z.FatherName, sum(z.grade) as grade from(select Student.StuID, Student._Name, Student.LastName, Student.FatherName, null as grade from Student where Student.ClassID = "+Globals.myTeacherSelectedClassId+" union select Student.StuID, Student._Name, Student.LastName, Student.FatherName, Grade.Grade from Student, Grade where Student.StuID = Grade.StuID and Grade.ExamID = "+ exam_ids[selectedItem] + ") as Z group by Z.StuID, z._Name, z.LastName, z.FatherName");
+                grades = db.Get_Table("select z.StuID, z._Name, z.LastName, z.FatherName,cast(sum(z.grade) as decimal(10,2)) as grade from(select Student.StuID, Student._Name, Student.LastName, Student.FatherName, null as grade from Student where Student.ClassID = " + Globals.myTeacherSelectedClassId+" union select Student.StuID, Student._Name, Student.LastName, Student.FatherName, Grade.Grade from Student, Grade where Student.StuID = Grade.StuID and Grade.ExamID = "+ exam_ids[selectedItem] + ") as Z group by Z.StuID, z._Name, z.LastName, z.FatherName");
                     classDataGrid.Columns.Clear();
                     classDataGrid.ItemsSource = grades.DefaultView;
                 changeName();

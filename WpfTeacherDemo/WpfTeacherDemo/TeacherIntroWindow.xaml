@@ -11,6 +11,11 @@
         
         Title="TeacherIntroWindow" Height="600" Width="1024" MaxHeight="600" MinHeight="600" MaxWidth="1024" MinWidth="1024">
     <Grid>
+        <Canvas HorizontalAlignment="Left" Height="571" VerticalAlignment="Top" Width="800" Margin="0,0,0,-0.333">
+            <Canvas.Background>
+                <ImageBrush ImageSource="wp2590323.png"/>
+            </Canvas.Background>
+        </Canvas>
         <Frame x:Name="studentsPanelPage" Margin="0,0,0,0" NavigationUIVisibility="Hidden"/>
 
         <StackPanel HorizontalAlignment="Left" Height="571" Margin="800,0,0,-0.333" VerticalAlignment="Top" Width="217" Background="#FF454545">
