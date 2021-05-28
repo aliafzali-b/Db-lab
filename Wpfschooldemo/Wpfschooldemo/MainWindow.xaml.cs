@@ -36,7 +36,7 @@ namespace Wpfschooldemo
             try
             {
                 db.Create_All_Tables();
-                db.Create_All_Functions();
+                
                 if (!db.isThereAnyBoss())
                 {
                     this.Hide();

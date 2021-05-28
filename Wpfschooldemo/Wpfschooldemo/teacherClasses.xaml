@@ -10,7 +10,7 @@
         Title="teacherClasses">
     <Grid>
         <TextBox x:Name="usernameTextbox" HorizontalAlignment="Left" Height="30" Margin="528,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin" TextChanged="usernameTextbox_TextChanged"/>
-        <Label Content=": نام کاربری معلم " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="737,97,0,0" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="B nazanin"/>
+        <Label Content=": نام کاربری معلم " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="720,97,0,0" VerticalAlignment="Top" Width="113" FontSize="18" FontFamily="B nazanin"/>
         <Label x:Name="Lable1" Content=": نام کلاس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="264,141,0,0" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="B nazanin"/>
         <Label x:Name="Lable2" Content=": نام درس " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="264,171,0,0" VerticalAlignment="Top" Width="90" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=" میتوانید مشخص کنید این معلم چه دروسی را تدریس کند " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="409,44,0,0" VerticalAlignment="Top" Width="424" FontSize="18" FontFamily="B nazanin"/>
@@ -18,7 +18,7 @@
         <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" Margin="490,97,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Visibility="Hidden"/>
         <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" Margin="490,97,0,0" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Visibility="Hidden"/>
         <Label x:Name="lable1" Content=": تدریس معلم " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="519,5,0,0" VerticalAlignment="Top" Width="314" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
-        <DataGrid x:Name="CoCoTdataGrid" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="352" Margin="361,137,0,0" VerticalAlignment="Top" Width="354" FontFamily="B nazanin" FontSize="20">
+        <DataGrid x:Name="CoCoTdataGrid" ColumnWidth="*" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="352" Margin="361,137,0,0" VerticalAlignment="Top" Width="354" FontFamily="B nazanin" FontSize="20" Background="Transparent" RowBackground="Transparent">
             <DataGrid.ContextMenu>
                 <ContextMenu HorizontalContentAlignment="Right">
                     <MenuItem Header="حذف" Click="deleteRightClick" />

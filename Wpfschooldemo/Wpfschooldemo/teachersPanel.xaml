@@ -9,7 +9,11 @@
         Loaded="Window_Loaded"
         Title="teachersPanel" Height="600" Width="1024" MaxHeight="600" MinHeight="600" MaxWidth="1024" MinWidth="1024">
     <Grid Background="#FFEBEBEB" >
-
+        <Canvas HorizontalAlignment="Left" Height="571" VerticalAlignment="Top" Width="843" Margin="0,0,0,-0.333">
+            <Canvas.Background>
+                <ImageBrush ImageSource="wp2590323.png"/>
+            </Canvas.Background>
+        </Canvas>
         <Frame x:Name="teachersPanelPage" Margin="0,0,0,0" NavigationUIVisibility="Hidden"/>
 
         <StackPanel HorizontalAlignment="Left" Height="571" Margin="843,0,0,-0.333" VerticalAlignment="Top" Width="174" Background="#FF454545">
@@ -19,12 +23,12 @@
             <Button x:Name="specialtyViewButton" Content="تدریس" Cursor="Hand" FontSize="20" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="specialtyViewButton_Click"/>
             <Button x:Name="seeAllViewButton" Content="مشاهده همه" Cursor="Hand" FontSize="20" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="seeAllViewButton_Click"/>
             <Button x:Name="deleteViewButton" Content="حذف" FontSize="20" Cursor="Hand" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="deleteViewButton_Click"/>
-            <Button x:Name="FunctionViewButton" Content="توابع خاص" FontSize="20" Cursor="Hand" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="FunctionViewButton_Click"/>
+            <Button x:Name="FunctionViewButton" Content="توابع خاص" FontSize="20" Cursor="Hand" Background="#FF424242" Foreground="White" FontFamily="B nazanin" BorderBrush="#FF333333" Click="FunctionViewButton_Click" />
 
         </StackPanel>
 
         <Label x:Name="lable1" Content=": مشاهده همه معلمان" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="55" Margin="519,5,0,0" VerticalAlignment="Top" Width="314" FontSize="28" FontFamily="B nazanin" FontWeight="Bold"/>
-        <DataGrid x:Name="teachersDataGrid" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="490" Margin="10,55,0,0" VerticalAlignment="Top" Width="820" FontFamily="B nazanin" FontSize="20" >
+        <DataGrid x:Name="teachersDataGrid" ColumnWidth="Auto" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="490" Margin="10,55,0,0" VerticalAlignment="Top" Width="820" FontFamily="B nazanin" FontSize="20"  Background="Transparent" RowBackground="Transparent">
             <DataGrid.ContextMenu>
                 <ContextMenu HorizontalContentAlignment="Right">
                     <MenuItem Header="ویرایش اطلاعات" Click="changeRightClick" />
@@ -39,5 +43,8 @@
         <Label x:Name="searchLable" Content="جستوجو بر اساس" HorizontalAlignment="Left" Margin="386,20,0,0" VerticalAlignment="Top"/>
 
         <Image x:Name="returnImage" Cursor="Hand" HorizontalAlignment="Left" Height="40" Margin="8,515,0,0" VerticalAlignment="Top" Width="40" Source="return.png" Stretch="Fill" MouseLeftButtonUp="returnImage_MouseLeftButtonUp"/>
+
+
+
     </Grid>
 </Window>

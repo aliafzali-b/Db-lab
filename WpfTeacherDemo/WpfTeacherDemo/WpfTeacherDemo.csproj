@@ -147,5 +147,17 @@
   <ItemGroup>
     <Resource Include="whiteExitIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wp2590323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="462751.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wp1947376-pattern-wallpapers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="29967c0267d58120fbcb043020b09858.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@
         
         WindowStartupLocation="CenterScreen"
         FontFamily="B nazanin"
-        Title="MainWindow" Height="450" Width="450" MaxHeight="450" MinHeight="450" MaxWidth="450" MinWidth="450">
+        Title="MainWindow" Height="450" Width="350" MaxHeight="450" MinHeight="450" MaxWidth="350" MinWidth="350">
 
     <Grid >
         <Grid.Background>
@@ -21,11 +21,12 @@
                 <GradientStop Color="#FF2E80E4" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="212" Margin="122,11,0,0" VerticalAlignment="Top" Width="213" Source="avatar.png"/>
-        <Label Content="Username" HorizontalAlignment="Left" Height="23" Margin="116,202,0,0" VerticalAlignment="Top" Width="64" FontSize="9" FontFamily="Segoe UI" Foreground="White"/>
-        <Label Content="Password" HorizontalAlignment="Left" Height="23" Margin="117,262,0,0" VerticalAlignment="Top" Width="53" FontSize="10" FontFamily="Segoe UI" Foreground="White"/>
+        <Image HorizontalAlignment="Left" Height="212" Margin="76,25,0,0" VerticalAlignment="Top" Width="213" Source="avatar.png"/>
+        <Label Content=": نام کاربری" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="200,217,0,0" VerticalAlignment="Top" Width="88" FontSize="14" FontFamily="B nazanin" Foreground="White"/>
+        <Label Content=": کلمه عبور" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="225,276,0,0" VerticalAlignment="Top" Width="63" FontSize="14" FontFamily="B nazanin" Foreground="White"/>
+        <Label Content="بخاطر سپردن کلمه عبور" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="142,341,0,0" VerticalAlignment="Top" Width="127" FontSize="12" FontFamily="B nazanin" Foreground="White"/>
 
-        <Button x:Name="loginButton" Content="login" HorizontalAlignment="Left" Height="31" Margin="116,354,0,0" VerticalAlignment="Top" Width="220"  FontSize="14" FontWeight="Bold" FontFamily="Segoe UI" Click="loginButton_Click"
+        <Button x:Name="loginButton" Content="ورود" HorizontalAlignment="Left" Height="31" Margin="70,378,0,0" VerticalAlignment="Top" Width="220"  FontSize="18" FontWeight="Bold" FontFamily="B nazanin" Click="loginButton_Click"
             Background="#f1f1f1"
             BorderBrush="#4a88df"
             Foreground="#FF62A4EE"
@@ -39,7 +40,7 @@
         </Button>
 
         <Border Padding="4" BorderThickness="1" BorderBrush="#5599ec" CornerRadius="10" Background="#FF62A4EE"  
-                Width="220" Height="35" Margin="117,220,113,195"  >
+                Width="220" Height="35" Margin="71,244,59,171"  >
             <DockPanel Grid.Row="1" Grid.Column="1">
                 <Image DockPanel.Dock="Left" Source="whiteUserIcon.png" Width="18" Height="18" Margin="5,0,0,0" ></Image>
                 <TextBox x:Name="usernameTextbox" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent"
@@ -49,15 +50,15 @@
 
 
         <Border Padding="4" BorderThickness="1" BorderBrush="#5599ec" CornerRadius="10" Background="#FF62A4EE"  
-                Width="220" Height="35" Margin="116,281,114,134"  >
+                Width="220" Height="35" Margin="70,305,60,110"  >
             <DockPanel Grid.Row="1" Grid.Column="1">
                 <Image DockPanel.Dock="Left" Source="whiteKeyIcon.png" Width="20" Height="20" Margin="5,0,0,0" ></Image>
                 <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Height="26"  VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" 
                              Foreground="#f1f1f1" Margin="4,0,10,0" Width="169"  FontSize="17"/>
             </DockPanel>
         </Border>
-        <CheckBox x:Name="rememberCheckbox" Padding="3" Content="Remember me" Foreground="#f1f1f1" HorizontalAlignment="Left" 
-                  Height="24" Margin="122,321,0,0" VerticalAlignment="Top" Width="104" FontSize="10" BorderThickness="0.5"/>
+        <CheckBox x:Name="rememberCheckbox" Padding="3" Foreground="#f1f1f1" HorizontalAlignment="Left" 
+                  Height="15" Margin="269,348,0,0" VerticalAlignment="Top" Width="23" FontSize="13" BorderThickness="0.5"/>
         <Image HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="19" Source="whiteExitIcon.png" Margin="10,10,0,0" MouseLeftButtonUp="ExitImage_MouseLeftButtonUp"/>
     </Grid>
 </Window>

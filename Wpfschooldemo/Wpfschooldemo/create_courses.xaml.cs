@@ -43,7 +43,7 @@ namespace Wpfschooldemo
             }
             foreach (Classes sample in classesList)
             {
-                checkbx[sample.classid - 1].Content = sample._name; // because id start's with 1 but checkbx's andise start's from 0
+                checkbx[sample.classid].Content = sample._name; // because id start's with 1 but checkbx's andise start's from 0
                 show_checkBoxes(true);
             }*/
         }
@@ -106,7 +106,7 @@ namespace Wpfschooldemo
                 checkAllImage.Visibility = Visibility.Visible;
                 foreach (Classes sample in classesList)
                 {
-                    checkbx[sample.classid - 1].Visibility = Visibility.Visible; // because id start's with 1 but checkbx's andise start's from 0
+                    checkbx[sample.classid].Visibility = Visibility.Visible; // because id start's with 1 but checkbx's andise start's from 0
                 }
             }
             if (visibility == false)
@@ -115,7 +115,7 @@ namespace Wpfschooldemo
                 checkAllImage.Visibility = Visibility.Hidden;
                 foreach (Classes sample in classesList)
                 {
-                    checkbx[sample.classid - 1].Visibility = Visibility.Hidden; // because id start's with 1 but checkbx's andise start's from 0
+                    checkbx[sample.classid].Visibility = Visibility.Hidden; // because id start's with 1 but checkbx's andise start's from 0
                 }
             }
         }*/

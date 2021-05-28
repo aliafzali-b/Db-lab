@@ -31,6 +31,7 @@ namespace Wpfschooldemo
 
             genderComboBox.Items.Add("آقا");
             genderComboBox.Items.Add("خانم");
+            db.Create_All_Functions();
         }
         void create_Boss_Window_Closed(object sender, EventArgs e)
         {
