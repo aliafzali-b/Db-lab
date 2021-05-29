@@ -145,9 +145,21 @@ namespace Wpfschooldemo
         {
             string oldname = textBox1.Text;
             string newname = textBox2.Text;
+
+            //string ClassName = textBox1.Text;
+            int Chairnum = -1;
+            try { Chairnum = Int32.Parse(TextBoxChairNum.Text); } catch { }
+
+            int BranchNum = -1;
+            try { BranchNum = Int32.Parse(TextBoxBranchNum.Text); } catch { }
+
+            string Year = TextBoxYear.Text;
+
+            int MajorID = MajorComboBox.SelectedIndex;
+
             if (db.isClassNameValid(newname))
             {
-                db.changeClassNameByName(oldname, newname);
+                db.changeClassNameByName(oldname, newname, Chairnum, BranchNum, Year, MajorID);
                 updateDataGrid();
             }
             else
@@ -173,6 +185,17 @@ namespace Wpfschooldemo
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            string ClassName = textBox1.Text;
+            if (MessageBox.Show("آیا واقعا میخواهید این کلاس حذف شود؟", "Are you sure", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                
+                db.removeClassByName(ClassName);
+            }
+            
         }
     }
 }
