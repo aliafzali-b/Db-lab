@@ -39,7 +39,7 @@
         </DataGrid>
 
         <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Height="37" Margin="10,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" FontFamily="B nazanin" FontSize="20" TextChanged="searchTextBox_TextChanged"/>
-        <ComboBox x:Name="searchComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="37" Margin="222,13,0,0" VerticalAlignment="Top" Width="164" FontFamily="B nazanin" FontSize="17" SelectedIndex="0"/>
+        <ComboBox x:Name="searchComboBox" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="37" Margin="0,13,631.333,0" VerticalAlignment="Top" Width="164" FontFamily="B nazanin" FontSize="17" SelectedIndex="0"/>
         <Label x:Name="searchLable" Content="جستوجو بر اساس" HorizontalAlignment="Left" Margin="386,20,0,0" VerticalAlignment="Top"/>
 
         <Image x:Name="returnImage" Cursor="Hand" HorizontalAlignment="Left" Height="40" Margin="8,515,0,0" VerticalAlignment="Top" Width="40" Source="return.png" Stretch="Fill" MouseLeftButtonUp="returnImage_MouseLeftButtonUp"/>
