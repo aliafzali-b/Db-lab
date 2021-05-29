@@ -42,6 +42,8 @@ namespace Wpfschooldemo
             searchComboBox.Items.Add("شماره تماس");
             searchComboBox.Items.Add("پست الکترونیک");
             searchComboBox.Items.Add("جنسیت");
+            searchComboBox.Items.Add("کلاس");
+            searchComboBox.Items.Add("درس");
         }
         void teachersPanel_Closed(object sender, EventArgs e)
         {
@@ -56,6 +58,7 @@ namespace Wpfschooldemo
             teachersList = db.GetTeachers();
             teachersDataGrid.ItemsSource = teachersList;
             teachersDataGrid.IsReadOnly = true;
+            teachersDataGrid.ContextMenu.IsEnabled = true;
             try
             {
                 teachersDataGrid.Columns.RemoveAt(9);
@@ -68,6 +71,8 @@ namespace Wpfschooldemo
                 teachersDataGrid.Columns[6].Header = " شماره تماس ";
                 teachersDataGrid.Columns[7].Header = " پست الکترونیک ";
                 teachersDataGrid.Columns[8].Header = " جنسیت ";
+                teachersDataGrid.Columns[9].Header = " کلاس ";
+                teachersDataGrid.Columns[10].Header = " درس ";
             }
             catch { }
         }
@@ -105,6 +110,7 @@ namespace Wpfschooldemo
         {
             changeBackgroundColor((Button)sender);
             teachersPanelPage.Content = new seeAll_teachersPage();
+            searchTextBox.Text = "";
             UpdateDataGrid();
             VeiwAll(1);
         }
@@ -190,30 +196,48 @@ namespace Wpfschooldemo
         {
             List<Teachers> searchTeachersList = new List<Teachers>();
             int selectedIndex = searchComboBox.SelectedIndex;
-            string[] indextext = { "username", "_password", "_name", "lastname", "Expert", "phone", "email", "gender"};
+            string[] indextext = { "username", "_password", "_name", "lastname", "Expert", "phone", "email", "gender","courses","class"};
             string searchValue = searchTextBox.Text;
             if (!string.IsNullOrWhiteSpace(searchValue))
             {
-                if (selectedIndex != -1)
+                if (selectedIndex != -1 && selectedIndex<8)
                 {
                     searchTeachersList = db.SearchTeachers(indextext[selectedIndex], searchValue);
                     teachersDataGrid.ItemsSource = searchTeachersList;
                     teachersDataGrid.IsReadOnly = true;
-                    try
-                    {
-                        teachersDataGrid.Columns.RemoveAt(9);
-                        teachersDataGrid.Columns[0].Header = " Id ";
-                        teachersDataGrid.Columns[1].Header = " نام کاربری";
-                        teachersDataGrid.Columns[2].Header = " کلمه عبور ";
-                        teachersDataGrid.Columns[3].Header = " نام ";
-                        teachersDataGrid.Columns[4].Header = " نام خانوادگی ";
-                        teachersDataGrid.Columns[5].Header = " تخصص ";
-                        teachersDataGrid.Columns[6].Header = " شماره تماس ";
-                        teachersDataGrid.Columns[7].Header = " پست الکترونیک ";
-                        teachersDataGrid.Columns[8].Header = " جنسیت ";
-                    }
-                    catch { }
                 }
+                if (selectedIndex == 8)
+                {
+                    DataTable myResult = db.Get_Table("select distinct Teacher.*,Courses._Name,Class._Name from teacher,cocot,Courses,Class where Teacher.TeacherID=CoCoT.TeacherID and Courses.CourseID=CoCoT.CourseID and CoCoT.ClassID=Class.ClassID and Class._Name like N'%"+ searchValue +"%'");
+                    teachersDataGrid.Columns.Clear();
+                    teachersDataGrid.ItemsSource = myResult.DefaultView;
+                    teachersDataGrid.IsReadOnly = true;
+                    teachersDataGrid.ContextMenu.IsEnabled = false;
+                }
+                if (selectedIndex == 9)
+                {
+                    DataTable myResult = db.Get_Table("select distinct Teacher.*,Courses._Name,Class._Name from teacher,cocot,Courses,Class where Teacher.TeacherID=CoCoT.TeacherID and Courses.CourseID=CoCoT.CourseID and CoCoT.ClassID=Class.ClassID and Courses._Name like N'%" + searchValue + "%'");
+                    teachersDataGrid.Columns.Clear();
+                    teachersDataGrid.ItemsSource = myResult.DefaultView;
+                    teachersDataGrid.IsReadOnly = true;
+                    teachersDataGrid.ContextMenu.IsEnabled = false;
+                }
+                try
+                {
+                    teachersDataGrid.Columns.RemoveAt(9);
+                    teachersDataGrid.Columns[0].Header = " Id ";
+                    teachersDataGrid.Columns[1].Header = " نام کاربری";
+                    teachersDataGrid.Columns[2].Header = " کلمه عبور ";
+                    teachersDataGrid.Columns[3].Header = " نام ";
+                    teachersDataGrid.Columns[4].Header = " نام خانوادگی ";
+                    teachersDataGrid.Columns[5].Header = " تخصص ";
+                    teachersDataGrid.Columns[6].Header = " شماره تماس ";
+                    teachersDataGrid.Columns[7].Header = " پست الکترونیک ";
+                    teachersDataGrid.Columns[8].Header = " جنسیت ";
+                    teachersDataGrid.Columns[8].Header = " کلاس ";
+                    teachersDataGrid.Columns[8].Header = " درس ";
+                }
+                catch { }
             }
             else
             {
