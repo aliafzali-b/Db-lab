@@ -57,7 +57,10 @@ namespace Wpfschooldemo
         private void UpdateDataGrid()
         {
             studentsList = db.GetStudents();
-            studentsDataGrid.ItemsSource = studentsList;
+            //studentsDataGrid.ItemsSource = studentsList;
+            DataTable myResult = db.Get_Table($"SELECT student.stuid,student.username,student._password,student._name,student.lastname,student.fathername,student.phone,student._address,student.info,class._name,student.gender from student,class Where student.classid=class.classid");
+            studentsDataGrid.Columns.Clear();
+            studentsDataGrid.ItemsSource = myResult.DefaultView;
             studentsDataGrid.IsReadOnly = true;
             try
              {
@@ -104,6 +107,7 @@ namespace Wpfschooldemo
         {
             changeBackgroundColor((Button)sender);
             studentsPanelPage.Content = new seeAll_studentsPage();
+            searchTextBox.Text = "";
             UpdateDataGrid();
             VeiwAll(1);
         }
@@ -144,34 +148,40 @@ namespace Wpfschooldemo
         }
         private void changeRightClick(object sender, RoutedEventArgs e)
         {
-            Students mystudent = (Students)studentsDataGrid.SelectedItem;
+            //Students mystudent = (Students)studentsDataGrid.SelectedItem;
             int selectedId = studentsDataGrid.SelectedIndex;
             if (selectedId >= 0)
             {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
+                DataRowView row = studentsDataGrid.SelectedItem as DataRowView;
+                string username = row.Row.ItemArray[1].ToString();
+                Globals.cache = username;
+                //change_studentPage changepage = new change_studentPage();
                 changeViewButton_Click(changeViewButton, e);
             }
         }
         private void karnameRightClick(object sender, RoutedEventArgs e)
         {
-            Students mystudent = (Students)studentsDataGrid.SelectedItem;
+            //Students mystudent = (Students)studentsDataGrid.SelectedItem;
             int selectedId = studentsDataGrid.SelectedIndex;
             if (selectedId >= 0)
             {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
+                DataRowView row = studentsDataGrid.SelectedItem as DataRowView;
+                string username = row.Row.ItemArray[1].ToString();
+                Globals.cache = username;
+                //change_studentPage changepage = new change_studentPage();
                 karnameViewButton_Click(karnameViewButton, e);
             }
         }
         private void deleteRightClick(object sender, RoutedEventArgs e)
         {
-            Students mystudent = (Students)studentsDataGrid.SelectedItem;
+            //Students mystudent = (Students)studentsDataGrid.SelectedItem;
             int selectedId = studentsDataGrid.SelectedIndex;
             if (selectedId >= 0)
             {
-                Globals.cache = mystudent.username;
-                change_studentPage changepage = new change_studentPage();
+                DataRowView row = studentsDataGrid.SelectedItem as DataRowView;
+                string username = row.Row.ItemArray[1].ToString();
+                Globals.cache = username;
+                //change_studentPage changepage = new change_studentPage();
                 deleteViewButton_Click(deleteViewButton, e);
             }
         }
@@ -180,13 +190,16 @@ namespace Wpfschooldemo
         {
             List<Students> searchStudentsList = new List<Students>();
             int selectedIndex = searchComboBox.SelectedIndex;
-            string[] indextext = { "username", "_password", "_name","lastname","fathername", "phone", "_address", "info", "classname","gender" };
+            string[] indextext = { "username", "_password", "_name","lastname","fathername", "phone", "_address", "info", "classid","gender" };
             string searchValue = searchTextBox.Text;
             if (!string.IsNullOrWhiteSpace(searchValue))
             {
                 if (selectedIndex != -1)
                 {
-                    searchStudentsList = db.SearchStudents(indextext[selectedIndex], searchValue);
+                    if (indextext[selectedIndex]!= "classid")
+                        searchStudentsList = db.SearchStudents(indextext[selectedIndex], searchValue);
+                    else
+                        searchStudentsList = db.SearchStudentsByClass(searchValue);
                     studentsDataGrid.ItemsSource = searchStudentsList;
                     studentsDataGrid.IsReadOnly = true;
                     try

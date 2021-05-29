@@ -326,6 +326,15 @@ namespace Wpfschooldemo
                 
             }
         }
+        public List<Students> SearchStudentsByClass(string value)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                var output = connection.Query<Students>($"SELECT student.* from student,class Where student.classid=class.classid and class._name like N'%{value}%'").ToList();
+                return output;
+
+            }
+        }
         public int GetClassIdByName(string name)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
