@@ -154,6 +154,24 @@ namespace Wpfschooldemo
 
             }
         }
+
+        internal void removeClassByName(string className)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+                    
+                    int deleteID = GetClassIdByName(className);
+                    connection.Execute($"delete from cocot where ClassID = {deleteID}");
+                    connection.Execute($"DELETE FROM Class WHERE teacherid = {deleteID}");
+                    connection.Execute($"UPDATE Class SET ClassID = ClassID-1 WHERE ClassID > {deleteID} ");
+                    MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("db error"); }
+            }
+        }
+
         public void insertIntoCourses(string name,int unit,int code)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
@@ -407,13 +425,13 @@ namespace Wpfschooldemo
             }
         }
 
-        public void changeClassNameByName(string oldname, string newname)
+        public void changeClassNameByName(string oldname, string newname,int Chairnum,int BranchNum,string Year,int MajorID)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    connection.Execute($"UPDATE classes SET _name = N'{newname}' WHERE _name= N'{oldname}'; ");
+                    connection.Execute($"UPDATE class SET _Name = N'{newname}',MajorID = {MajorID} , BranchNumber={BranchNum},_Year='{Year}',ChairNum = {Chairnum} WHERE _Name= N'{oldname}'; ");
                 }
                 catch { MessageBox.Show("db error"); }
             }
