@@ -195,8 +195,10 @@ namespace Wpfschooldemo
             {
                 
                 db.removeClassByName(ClassName);
+                updateDataGrid();
+
             }
-            
+
         }
     }
 }

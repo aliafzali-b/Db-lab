@@ -163,7 +163,7 @@ namespace Wpfschooldemo
                 {
                     
                     int deleteID = GetClassIdByName(className);
-                    connection.Execute($"delete from CoCoT where ClassID={deleteID}");
+                    /*connection.Execute($"delete from CoCoT where ClassID={deleteID}");
                     connection.Execute($"delete from exam where ClassID={deleteID}");
                     connection.Execute($"delete from Student where ClassID={deleteID}");
                     connection.Execute($"delete from Class where ClassID={deleteID}");
@@ -173,7 +173,9 @@ namespace Wpfschooldemo
                     connection.Execute($"insert @refrenceTable select * from gradeNewExamId()");
                     connection.Execute($"UPDATE exam SET exam.ExamID = exam.new_examid-1 FROM (SELECT ExamID, ROW_NUMBER() OVER (ORDER BY [examid]) AS new_examid FROM Exam) exam");
                     connection.Execute($"UPDATE grade set grade.ExamID=ref.newExamId from grade,@refrenceTable as ref where grade.ExamID=ref.oldExamId");
+                    */
 
+                    connection.Execute($"exec deleteclass {deleteID}");
 
 
                     MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
