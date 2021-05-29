@@ -33,7 +33,7 @@
             <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Canvas.Top="22" Canvas.Left="85"/>
             <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="38" Source="warning.png" Canvas.Top="17" Canvas.Left="77"/>
             <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="127" FontSize="16" FontWeight="Bold" Click="addButton_Click" Canvas.Left="328" Canvas.Top="59"/>
-            <Button x:Name="deleteButton" Cursor="Hand" Content="حذف" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="127" FontSize="16" IsEnabled="False" Canvas.Left="328" Canvas.Top="218"/>
+            <Button x:Name="deleteButton" Cursor="Hand" Content="حذف" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="127" FontSize="16" IsEnabled="False" Canvas.Left="328" Canvas.Top="218" Click="deleteButton_Click"/>
             <Button x:Name="changeButton" Cursor="Hand" Content="تغییر نام به این نام" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="127" FontSize="14" Click="changeButton_Click" Canvas.Left="328" Canvas.Top="170"/>
             <Label Content=": نام کلاس" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="92" FontSize="16" Canvas.Left="235" Canvas.Top="22"/>
             <Label x:Name="nameLable" Content=": نام جدید" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Canvas.Left="235" Canvas.Top="177" RenderTransformOrigin="0.6,1.794"/>
