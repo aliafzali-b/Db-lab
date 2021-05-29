@@ -82,7 +82,7 @@ namespace Wpfschooldemo
                 trueImage.Visibility = Visibility.Hidden;
                 warningImage.Visibility = Visibility.Hidden;
                 addButton.IsEnabled = false;
-                if (db.GetClassIdByName(textBox1.Text) > 0)
+                if (db.GetClassIdByName(textBox1.Text) >= 0)
                 {
                     deleteButton.Visibility = Visibility.Visible;
                     changeButton.Visibility = Visibility.Visible;
@@ -91,6 +91,7 @@ namespace Wpfschooldemo
                     textBox2.Visibility = Visibility.Visible;
                     nameLable.Visibility = Visibility.Visible;
                     textBox2.Text = "";
+                    deleteButton.IsEnabled = true;
                 }
             }
             if (textBox1.Text == "")
