@@ -457,13 +457,13 @@ namespace Wpfschooldemo
                 catch { MessageBox.Show("عملیات با شکست رو به رو شد", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
             }
         }
-        public void updateCourseNameByName(string oldname, string newname, string classes)
+        public void updateCourseNameByName(string oldname, string newname,int code,int unit)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
             {
                 try
                 {
-                    connection.Execute($"UPDATE courses SET _name = N'{newname}', _classes = '{classes}' WHERE _name= N'{oldname}'; ");
+                    connection.Execute($"UPDATE courses SET _name = N'{newname}', Unit = {unit},Ccode={code} WHERE _name= N'{oldname}'; ");
                 }
                 catch { MessageBox.Show("عملیات با شکست رو به رو شد", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
             }

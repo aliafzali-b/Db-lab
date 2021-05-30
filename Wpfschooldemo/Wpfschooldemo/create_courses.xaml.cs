@@ -36,6 +36,7 @@ namespace Wpfschooldemo
             textBoxName.Text = "for excute onchange text function";
             classesList = db.GetClasses();
             coursesList = db.GetCourses();
+            //updateDataGrid();
            // checkbx = new List<CheckBox>() { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18, checkBox19, checkBox20, checkBox21};
            /* foreach (CheckBox sample in checkbx)
             {
@@ -52,11 +53,11 @@ namespace Wpfschooldemo
         {
             have_We_any_Change = false;
             updateDataGrid();
-            try
+            /*try
             {
                 dataGrid1.Columns.RemoveAt(2);
             }
-            catch { }
+            catch { }*/
         }
 
         void create_courses_Closed(object sender, EventArgs e)
@@ -77,11 +78,11 @@ namespace Wpfschooldemo
             coursesList = db.GetCourses();
             dataGrid1.ItemsSource = coursesList;
             dataGrid1.IsReadOnly = true;
-            try
+            /*try
             {
                 dataGrid1.Columns.RemoveAt(2);
             }
-            catch { }
+            catch { }*/
             textBoxName.Text = "";//chon ba ezafe shodan item haye listbox in textbox meghdar migereft
             uncheckAll();
         }
@@ -132,11 +133,11 @@ namespace Wpfschooldemo
 
         private void textBoxName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            /*coursesList = db.GetCourses();
-            bool isvalid = db.isCourseNameValid(textBox1.Text);
+            coursesList = db.GetCourses();
+            bool isvalid = db.isCourseNameValid(textBoxName.Text);
             if (isvalid == true)
             {
-                show_checkBoxes(true);
+                //show_checkBoxes(true);
                 errorImage.Visibility = Visibility.Hidden;
                 trueImage.Visibility = Visibility.Visible;
                 warningImage.Visibility = Visibility.Hidden;
@@ -148,22 +149,25 @@ namespace Wpfschooldemo
             }
             else
             {
-                errorImage.Visibility = Visibility.Visible;
+                errorImage.Visibility = Visibility.Hidden;
                 trueImage.Visibility = Visibility.Hidden;
-                warningImage.Visibility = Visibility.Hidden;
+                warningImage.Visibility = Visibility.Visible;
                 addButton.Visibility = Visibility.Hidden;
-                int courseid = db.GetCourseIdByName(textBox1.Text);
+                changeButton.Visibility = Visibility.Visible;
+                textBox2.Visibility = Visibility.Visible;
+                lable3.Visibility = Visibility.Visible;
+                int courseid = db.GetCourseIdByName(textBoxName.Text);
                 if (courseid > 0)
                 {
-                    show_checkBoxes(true);
+                    //show_checkBoxes(true);
                     changeButton.Visibility = Visibility.Visible;
                     warningImage.Visibility = Visibility.Visible;
                     lable3.Visibility = Visibility.Visible;
                     errorImage.Visibility = Visibility.Hidden;
                     textBox2.Visibility = Visibility.Visible;
-                    textBox2.Text = textBox1.Text;
+                    textBox2.Text = textBoxName.Text;
                     //tik zadan checkbox ha
-                    char[] classesOfcourse = coursesList[courseid - 1].classes.ToCharArray();
+                   /* char[] classesOfcourse = coursesList[courseid - 1].classes.ToCharArray();
                     int n = 0;
                     foreach (char sample in classesOfcourse)
                     {
@@ -173,11 +177,11 @@ namespace Wpfschooldemo
                             checkbx[n].IsChecked = false;
                         n++;
                     }
-
+                   */
 
                 }
             }
-            if (textBox1.Text == "")
+            if (textBoxName.Text == "")
             {
                errorImage.Visibility = Visibility.Hidden;
                 trueImage.Visibility = Visibility.Hidden;
@@ -187,10 +191,10 @@ namespace Wpfschooldemo
                 textBox2.Visibility = Visibility.Hidden;
                 lable3.Visibility = Visibility.Hidden;
                 textBox2.Text = "";
-                show_checkBoxes(false);
+                //show_checkBoxes(false);
                 uncheckAll();
             }
-            */
+            
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -206,6 +210,9 @@ namespace Wpfschooldemo
             try { code = Int32.Parse(textBoxCode.Text); } catch { }
             DataAccess db = new DataAccess();
             db.insertIntoCourses(name,unit,code);
+            textBoxName.Text = "";
+            textBoxCode.Text = "";
+            textBoxUnit.Text = "";
             updateDataGrid();
             /* foreach (CheckBox sample in checkbx)
              {
@@ -254,85 +261,23 @@ namespace Wpfschooldemo
         {
             string oldname = textBoxName.Text;
             string newname = textBox2.Text;
+
+            int unit = -1;
+            try { unit = Int32.Parse(textBoxUnit.Text); } catch { }
+
+            int code = -1;
+            try { code = Int32.Parse(textBoxCode.Text); } catch { }
+            db.updateCourseNameByName(oldname, newname, unit, code);
+
+            //MessageBox.Show("انجام شد", "done",);
+
+            updateDataGrid();
+            textBox2.Text = "";
+            textBoxCode.Text = "";
+            textBoxUnit.Text = "";
             string cla = "";
             string no = "";
-            if (db.isCourseNameValid(newname) || oldname==newname) 
-            { 
-                //change checkboxs
-                /*foreach (CheckBox sample in checkbx)
-                {
-                    no += "0";
-                    if (sample.IsChecked == true)
-                        cla += "1";
-                    else
-                        cla += "0";
-                }*/
-                //MessageBox.Show(cla);
-                if (cla != no)
-                {
-                    db.updateCourseNameByName(oldname, newname , cla);
-
-                    /////////////---------------------------------------------------------------------------------------
-                    ///
-                    string takhasos ;
-                    char[] newRules = cla.ToCharArray();
-                    int courseid_int = db.GetCourseIdByName(newname);
-                    int courseid_InTakhasos;
-                    int i = 0;
-                    
-                    teachersList = db.GetTeachers();
-                    /*db-lab foreach (Teachers myteacher in teachersList)
-                    {
-                        takhasos = myteacher.takhasos;
-                        char[] tchar = takhasos.ToCharArray();
-                        char[][] cchar = { myteacher.classes1.ToCharArray(), myteacher.classes2.ToCharArray(), myteacher.classes3.ToCharArray() };
-                        i= 0;
-                       
-                        foreach (char sample in tchar)
-                        {
-                            courseid_InTakhasos = find_Symbol_In_S_Array(tchar[i]) + 1;
-                            if (courseid_InTakhasos== courseid_int)
-                            {
-                                //// classes i must be cla
-                                ///
-                                
-                                int rullnumber = 0;
-                                foreach(char rule in newRules)
-                                {
-                                    if (rule=='0' && cchar[i][rullnumber] == '1')
-                                    {
-                                        cchar[i][rullnumber] = '0';
-                                        MessageBox.Show("یکی از کلاس هایی که " + myteacher.name + " تدریس میکند دچار تغییر شد");
-                                        if (new string(cchar[i]) == "000000000000000000000")
-                                            tchar[i] = '0';
-                                    }
-                                    rullnumber++;
-                                }
-                               
-                                db.updateTeacherNameByUsername(myteacher.username, myteacher.username, myteacher.password, myteacher.name, new string(tchar), new string(cchar[0]), new string(cchar[1]), new string(cchar[2]));
-                            }
-                            i++;
-                          
-                        }
-                        
-                        //classesTakhasos1 = myteacher.classes1;
-                        //classesTakhasos2 = "000000000000000000000";
-                        //classesTakhasos3 = "000000000000000000000";
-                    }*/
-
-                    uncheckAll();
-                    updateDataGrid();
-                    //MessageBox.Show("اگر معلمی در حال ");
-                }
-                else
-                {
-                    MessageBox.Show("لطفا حداقل یک کلاس را انتخاب کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                updateDataGrid();
-            }
-            else
-                MessageBox.Show("ورودی نامعتبر", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
-
+           
 
             have_We_any_Change = true;
 
