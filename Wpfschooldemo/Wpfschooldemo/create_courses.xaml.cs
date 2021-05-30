@@ -244,7 +244,7 @@ namespace Wpfschooldemo
             Courses mycourse = (Courses)dataGrid1.SelectedItem;
             if (mycourse != null)
             {
-                int selectedId = (mycourse.courseid)-1;
+                int selectedId = mycourse.courseid;
                 if (selectedId >= 0)
                     textBoxName.Text = coursesList[selectedId]._name;
             } 
@@ -342,6 +342,13 @@ namespace Wpfschooldemo
                 counter++;
             }
             return -1;
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = textBoxName.Text;
+
+            db.removeCourseByName(name);
         }
     }
 }

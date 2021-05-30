@@ -18,8 +18,10 @@
             <TextBox x:Name="textBoxCode" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"  FontSize="16" Canvas.Left="114" Canvas.Top="109"/>
 
             <TextBox x:Name="textBox2" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" Canvas.Top="160" Canvas.Left="175"/>
-            <Button x:Name="changeButton" Cursor="Hand" Content="ذخیره تغییرات" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" FontSize="18" Click="changeButton_Click" Canvas.Left="272" Canvas.Top="243"/>
-            <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" Click="addButton_Click" FontSize="22" Canvas.Left="272" Canvas.Top="243"/>
+            <Button x:Name="changeButton" Cursor="Hand" Content="ذخیره تغییرات" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" FontSize="18" Click="changeButton_Click" Canvas.Left="272" Canvas.Top="229"/>
+            <Button x:Name="deleteButton" Cursor="Hand" Content="حذف" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" FontSize="18" Click="deleteButton_Click" Canvas.Left="272" Canvas.Top="283"/>
+
+            <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" Click="addButton_Click" FontSize="22" Canvas.Left="276" Canvas.Top="229"/>
             <Label Content="افزودن درس جدید" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="345" Canvas.Top="10"/>
             <Label Content=": نام درس" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="60"/>
             <Label Content=": واحد" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="102" RenderTransformOrigin="0.209,0.405"/>

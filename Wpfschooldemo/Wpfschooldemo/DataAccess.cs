@@ -180,7 +180,35 @@ namespace Wpfschooldemo
 
                     MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch { MessageBox.Show("db error"); }
+                catch { MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information); }
+            }
+        }
+        internal void removeCourseByName(string courseName)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbschool")))
+            {
+                try
+                {
+
+                    int deleteID = GetCourseIdByName(courseName);
+                    /*connection.Execute($"delete from CoCoT where ClassID={deleteID}");
+                    connection.Execute($"delete from exam where ClassID={deleteID}");
+                    connection.Execute($"delete from Student where ClassID={deleteID}");
+                    connection.Execute($"delete from Class where ClassID={deleteID}");
+                    connection.Execute($"UPDATE Class SET ClassID = ClassID-1 WHERE ClassID > {deleteID}");
+                    connection.Execute($"UPDATE student SET student.stuid = student.new_stuid-1 FROM (SELECT stuid, ROW_NUMBER() OVER (ORDER BY [stuid]) AS new_stuid FROM student) student");
+                    connection.Execute($"declare @refrenceTable table (oldExamId int,newExamId int)");
+                    connection.Execute($"insert @refrenceTable select * from gradeNewExamId()");
+                    connection.Execute($"UPDATE exam SET exam.ExamID = exam.new_examid-1 FROM (SELECT ExamID, ROW_NUMBER() OVER (ORDER BY [examid]) AS new_examid FROM Exam) exam");
+                    connection.Execute($"UPDATE grade set grade.ExamID=ref.newExamId from grade,@refrenceTable as ref where grade.ExamID=ref.oldExamId");
+                    */
+
+                    connection.Execute($"exec deletecourse {deleteID}");
+
+
+                    MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch { MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information); }
             }
         }
 
