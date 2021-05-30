@@ -144,6 +144,8 @@ namespace Wpfschooldemo
                 lable3.Visibility = Visibility.Hidden;
                 addButton.Visibility = Visibility.Visible;
                 changeButton.Visibility = Visibility.Hidden;
+                deleteButton.Visibility = Visibility.Hidden;
+
                 textBox2.Visibility = Visibility.Hidden;
                 textBox2.Text = "";
             }
@@ -154,6 +156,8 @@ namespace Wpfschooldemo
                 warningImage.Visibility = Visibility.Visible;
                 addButton.Visibility = Visibility.Hidden;
                 changeButton.Visibility = Visibility.Visible;
+                deleteButton.Visibility = Visibility.Visible;
+
                 textBox2.Visibility = Visibility.Visible;
                 lable3.Visibility = Visibility.Visible;
                 int courseid = db.GetCourseIdByName(textBoxName.Text);
@@ -188,6 +192,8 @@ namespace Wpfschooldemo
                 warningImage.Visibility = Visibility.Hidden;
                 addButton.Visibility = Visibility.Hidden;
                 changeButton.Visibility = Visibility.Hidden;
+                deleteButton.Visibility = Visibility.Hidden;
+
                 textBox2.Visibility = Visibility.Hidden;
                 lable3.Visibility = Visibility.Hidden;
                 textBox2.Text = "";
@@ -349,6 +355,8 @@ namespace Wpfschooldemo
             string name = textBoxName.Text;
 
             db.removeCourseByName(name);
+
+            updateDataGrid();
         }
     }
 }
