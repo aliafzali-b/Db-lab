@@ -17,7 +17,7 @@
         <TextBox x:Name="nameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="445,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <TextBox x:Name="lastnameTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="445,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
         <TextBox x:Name="emailTextbox" HorizontalAlignment="Left" Height="30" Margin="445,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" FontSize="18" FontFamily="b nazanin"/>
-        <TextBox x:Name="addressTextbox" HorizontalAlignment="Left" Height="79" Margin="41,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="365" FontSize="18" FontFamily="b nazanin"/>
+        <TextBox x:Name="addressTextbox" HorizontalAlignment="Left" HorizontalContentAlignment="Right"  Height="79" Margin="41,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="365" FontSize="18" FontFamily="b nazanin"/>
         <ComboBox x:Name="genderComboBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="156,266,0,0" VerticalAlignment="Top" Width="187" FontSize="17" FontFamily="B nazanin"/>
         <Label Content=": نام کاربری " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="687,137,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>
         <Label Content=": کلمه عبور " HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="35" Margin="687,178,0,0" VerticalAlignment="Top" Width="74" FontSize="18" FontFamily="B nazanin"/>

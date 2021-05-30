@@ -93,9 +93,7 @@ namespace Wpfschooldemo
                 // DataAccess db = new DataAccess();
                 db.insertIntoStudentsTable(username, password, name,lastname, fathername,phone,address,info,classid,gender);
                 //db.Add_One_Student_Values_In_Classes_List(db.GetStudentIdByUsername(username));
-
                 clearAllTextBoxes();
-                MessageBox.Show("انجام شد", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

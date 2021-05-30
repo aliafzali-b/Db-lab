@@ -245,11 +245,22 @@ namespace Wpfschooldemo
                 {
                     var output = connection.Query($"SELECT * FROM Student").ToList();
                     int range = output.Count();
+                    DataTable chairnumberTb = Get_Table($"select ChairNum from class where ClassID={classid}");
+                    List<int> chairnumber = chairnumberTb.AsEnumerable()
+                        .Select(r => r.Field<int>("ChairNum"))
+                        .ToList();
                     //MessageBox.Show("its id will be " + (range + 1).ToString());
-                    connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},'{gender}')");
+                    if (chairnumber[0] >= range)
+                    {
+                        MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                        connection.Execute($"insert into Student values({range},'{username}','{password}',N'{name}',N'{lastname}',N'{fathername}',{phone},N'{address}',N'{info}',{classid},'{gender}')");
+                    }
+                    else
+                        MessageBox.Show("ظرفیت کلاس تکمیل است", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    
                     //MessageBox.Show("اضافه گردید", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch { MessageBox.Show("cant"); }
+                catch { MessageBox.Show("عملیات با شکست رو به رو شد", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
             }
         }
 

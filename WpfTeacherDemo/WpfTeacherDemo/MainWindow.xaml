@@ -38,7 +38,7 @@
                 Width="220" Height="35" Margin="117,220,113,195"  >
             <DockPanel Grid.Row="1" Grid.Column="1">
                 <Image DockPanel.Dock="Left" Source="whiteUserIcon.png" Width="18" Height="18" Margin="5,0,0,0" ></Image>
-                <TextBox Text="teacher0" x:Name="usernameTextbox" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent"
+                <TextBox Text="" x:Name="usernameTextbox" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent"
                           Foreground="#f1f1f1" Margin="0,1,10,0"></TextBox>
             </DockPanel>
         </Border>
@@ -48,7 +48,7 @@
                 Width="220" Height="35" Margin="116,281,114,134"  >
             <DockPanel Grid.Row="1" Grid.Column="1">
                 <Image DockPanel.Dock="Left" Source="whiteKeyIcon.png" Width="20" Height="20" Margin="5,0,0,0" ></Image>
-                <PasswordBox Password="password" x:Name="passwordBox" HorizontalAlignment="Left" Height="26"  VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" 
+                <PasswordBox Password="" x:Name="passwordBox" HorizontalAlignment="Left" Height="26"  VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" 
                              Foreground="#f1f1f1" Margin="4,0,10,0" Width="169"  FontSize="17"/>
             </DockPanel>
         </Border>
