@@ -208,7 +208,7 @@ namespace Wpfschooldemo
 
                     MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch { MessageBox.Show("حذف گردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information); }
+                catch { MessageBox.Show("حذف نگردید", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information); }
             }
         }
 
