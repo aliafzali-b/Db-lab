@@ -11,26 +11,26 @@
         Title="create_courses" Height="560" Width="700" MaxHeight="560" MinHeight="560" MaxWidth="700" MinWidth="700">
     <Grid Margin="0,0,0.333,-3.333" Background="#FFEBEBEB" >
         <Canvas Margin="210,90,15,90">
-            <Border BorderThickness="1"  BorderBrush="Black"  CornerRadius="10"  Background="LightGray"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="470"  Height="350" />
+            <Border BorderThickness="1"  BorderBrush="Black"  CornerRadius="10"  Background="LightGray"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="381"  Height="350" Canvas.Left="89" />
 
             <TextBox x:Name="textBoxName" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" TextChanged="textBoxName_TextChanged" FontSize="16" Canvas.Left="238" Canvas.Top="64"/>
             <TextBox x:Name="textBoxUnit" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"  FontSize="16" Canvas.Left="345" Canvas.Top="109"/>
             <TextBox x:Name="textBoxCode" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"  FontSize="16" Canvas.Left="114" Canvas.Top="109"/>
 
-            <TextBox x:Name="textBox2" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" Canvas.Top="305" Canvas.Left="6"/>
-            <Button x:Name="changeButton" Cursor="Hand" Content="ذخیره تغییرات" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="165" FontSize="18" Click="changeButton_Click" Canvas.Left="298" Canvas.Top="305"/>
-            <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" Click="addButton_Click" FontSize="22" Canvas.Left="295" Canvas.Top="305"/>
+            <TextBox x:Name="textBox2" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" Canvas.Top="160" Canvas.Left="175"/>
+            <Button x:Name="changeButton" Cursor="Hand" Content="ذخیره تغییرات" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" FontSize="18" Click="changeButton_Click" Canvas.Left="272" Canvas.Top="243"/>
+            <Button x:Name="addButton" Cursor="Hand" Content="افزودن" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="170" Click="addButton_Click" FontSize="22" Canvas.Left="272" Canvas.Top="243"/>
             <Label Content="افزودن درس جدید" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="345" Canvas.Top="10"/>
             <Label Content=": نام درس" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="60"/>
             <Label Content=": واحد" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="399" Canvas.Top="102" RenderTransformOrigin="0.209,0.405"/>
             <Label Content=": کد" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Canvas.Left="238" Canvas.Top="102"/>
 
-            <Label x:Name="lable3" Content=": نام جدید" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="63" FontSize="16" Canvas.Left="227" Canvas.Top="304"/>
-            <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Canvas.Left="21" Canvas.Top="64"/>
-            <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Canvas.Left="21" Canvas.Top="64"/>
-            <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="38" Source="warning.png" Canvas.Left="17" Canvas.Top="59"/>
+            <Label x:Name="lable3" Content=": نام جدید" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="63" FontSize="16" Canvas.Left="399" Canvas.Top="160"/>
+            <Image x:Name="trueImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (2).png" Canvas.Left="166" Canvas.Top="68"/>
+            <Image x:Name="errorImage" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Source="klipartz.com (3).png" Canvas.Left="166" Canvas.Top="67"/>
+            <Image x:Name="warningImage" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="38" Source="warning.png" Canvas.Left="166" Canvas.Top="60"/>
         </Canvas>
-        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="343" Margin="18,93,0,0" VerticalAlignment="Top" Width="187" GridLinesVisibility="Vertical" SelectionChanged="dataGrid1_SelectionChanged" FontSize="18"/>
+        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" FlowDirection="RightToLeft" Height="346" Margin="18,90,0,0" VerticalAlignment="Top" Width="272" GridLinesVisibility="Vertical" SelectionChanged="dataGrid1_SelectionChanged" FontSize="18"/>
         <Label Content="مدیریت دروس" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="489,10,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
         <Label Content="لیست دروس موجود" HorizontalAlignment="Left" Margin="103,63,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Image x:Name="returnImage" Cursor="Hand" HorizontalAlignment="Left" Height="40" Margin="5,481,0,0" VerticalAlignment="Top" Width="40" Source="return.png" Stretch="Fill" MouseLeftButtonUp="returnImage_MouseLeftButtonUp"/>

@@ -124,8 +124,17 @@ namespace Wpfschooldemo
 
 
 
-            if (db.isClassNameValid(textBox1.Text) && ClassName != "" && Year != "" && Chairnum >= 0 && MajorID >=0 && BranchNum >=0)
+            if (db.isClassNameValid(textBox1.Text) && ClassName != "" && Year != "" && Chairnum >= 0 && MajorID >= 0 && BranchNum >= 0)
+            {
                 db.insertIntoClasses(ClassName,Year,MajorID,Chairnum,BranchNum);
+
+                textBox1.Text = "";
+                TextBoxBranchNum.Text = "";
+                TextBoxChairNum.Text = "";
+                TextBoxYear.Text = "";
+                MajorComboBox.SelectedIndex = -1;
+
+            }
             else
                 MessageBox.Show("ورودی نامعتبر", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             updateDataGrid();
