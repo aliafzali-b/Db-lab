@@ -44,21 +44,40 @@ namespace WpfTeacherDemo
         {
             string username = usernameTextbox.Text;
             string password = passwordBox.Password;
+            
+            
             if (db.isTeacherPasswordCorrect(username, password))
             {
                 db.initialize_myTeacher_By_Username(username);
                 int teacherId = Globals.myTeacher.teacherId;
-                CocotForTeacherFrontEnd = db.Get_Table("select Courses._Name as courseName,Class._Name as className from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
-                CocotForTeacherBackEnd = db.Get_Table("select Courses.courseId as courseId,Class.classID as classId from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
-                int selectedItem = 0;
-                int courseid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(0);
-                int classid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(1);
-                string courseName = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(0);
-                string className = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(1);
-                Globals.myTeacherSelectedClassId = classid;
-                Globals.myTeacherSelectedCourseId = courseid;
-                Globals.myTeacherSelectedClassName = className;
-                Globals.myTeacherSelectedCourseName = courseName;
+                DataTable myResult = db.Get_Table($"select count(*) as zcount from CoCoT where teacherid = {teacherId}");
+                List<int> classcount = myResult.AsEnumerable()
+                       .Select(r => r.Field<int>("zcount"))
+                       .ToList();
+                if (classcount[0]>0)
+                {
+                    CocotForTeacherFrontEnd = db.Get_Table("select Courses._Name as courseName,Class._Name as className from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+                    CocotForTeacherBackEnd = db.Get_Table("select Courses.courseId as courseId,Class.classID as classId from CoCoT,Class,Courses where TeacherID=" + teacherId + " and CoCoT.ClassID=Class.ClassID and Courses.CourseID=CoCoT.CourseID");
+                    int selectedItem = 0;
+                    int courseid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(0);
+                    int classid = CocotForTeacherBackEnd.Rows[selectedItem].Field<int>(1);
+                    string courseName = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(0);
+                    string className = CocotForTeacherFrontEnd.Rows[selectedItem].Field<string>(1);
+                    Globals.myTeacherSelectedClassId = classid;
+                    Globals.myTeacherSelectedCourseId = courseid;
+                    Globals.myTeacherSelectedClassName = className;
+                    Globals.myTeacherSelectedCourseName = courseName;
+
+
+
+                    this.Hide();
+                    var TeacherIntroWindow = new TeacherIntroWindow();
+                    TeacherIntroWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("متاسفانه کلاسی برای شما در سامانه تعریف نشده", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 /***
                 char[] tchar = Globals.myTeacher.takhasos.ToCharArray();
                 int courseid;
@@ -85,13 +104,6 @@ namespace WpfTeacherDemo
 
                 }
                 ****/
-
-
-
-
-                this.Hide();
-                var TeacherIntroWindow = new TeacherIntroWindow();
-                TeacherIntroWindow.Show();
             }
             else
             {

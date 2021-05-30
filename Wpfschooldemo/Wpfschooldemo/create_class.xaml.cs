@@ -145,7 +145,7 @@ namespace Wpfschooldemo
             Classes myclass = (Classes)dataGrid1.SelectedItem;
             if (myclass != null)
             {
-                int selectedId = myclass.classid - 1;
+                int selectedId = myclass.classid;
                 if (selectedId >= 0)
                     textBox1.Text = classlist[selectedId]._name;
             } 
