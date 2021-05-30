@@ -343,5 +343,12 @@ namespace Wpfschooldemo
             }
             return -1;
         }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = textBoxName.Text;
+
+            db.removeCourseByName(name);
+        }
     }
 }
